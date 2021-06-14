@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane id="fondo" fx:id="Menu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" stylesheets="/Style/StyleModulo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu.Menu">
+   <left>
+      <VBox fx:id="PanelMenu" prefHeight="670.0" prefWidth="301.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <opaqueInsets>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </opaqueInsets>
+         <children>
+            <Label id="nombreTienda" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="282.0" text="GS Accesorios">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin></Label>
+            <Label id="tituloMenu" alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="282.0" text="Menu " />
+            <Button fx:id="btnVenta" alignment="CENTER_LEFT" contentDisplay="LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="303.0" text="Punto de Venta" />
+            <Button fx:id="btnProducto" alignment="CENTER_LEFT" contentDisplay="LEFT" mnemonicParsing="false" onAction="#AbrirProducto" prefHeight="40.0" prefWidth="303.0" text="Producto" />
+            <Button fx:id="btnCliente" alignment="CENTER_LEFT" contentDisplay="LEFT" mnemonicParsing="false" onAction="#AbrirCliente" prefHeight="40.0" prefWidth="303.0" text="Cliente" />
+            <Button fx:id="btnProveedor" alignment="CENTER_LEFT" contentDisplay="LEFT" mnemonicParsing="false" prefHeight="42.0" prefWidth="303.0" text="Proveedor" />
+            <Button fx:id="btnColocacion" alignment="CENTER_LEFT" contentDisplay="LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="303.0" text="Colocacion" />
+            <Button fx:id="btnInforme" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="303.0" text="Informe" />
+            <Label />
+            <Label id="nombreInfo" alignment="CENTER" contentDisplay="BOTTOM" prefHeight="18.0" prefWidth="150.0" text="\@BitSolutionSoft" />
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding></VBox>
+   </left>
+   <padding>
+      <Insets bottom="25.0" left="15.0" right="25.0" top="25.0" />
+   </padding>
+   <opaqueInsets>
+      <Insets left="5.0" right="5.0" />
+   </opaqueInsets>
+</BorderPane>
