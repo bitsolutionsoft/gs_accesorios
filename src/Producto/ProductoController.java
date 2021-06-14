@@ -181,6 +181,10 @@ if (pro!=null){
             Stage stage=new Stage();
             stage.setScene(new Scene(parent));
             stage.show();
+            stage.setOnHiding((event ->{
+                initLista();
+                listProducto.refresh();
+            }));
 
         }catch (IOException e){
             e.printStackTrace();
