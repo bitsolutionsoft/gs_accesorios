@@ -1,4 +1,4 @@
-package Proveedor;
+package Cliente;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -8,11 +8,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ProveedorController {
-
-    public void nuevoProveedor(ActionEvent actionEvent) {
+public class ClienteController {
+    public void nuevoCliente(ActionEvent actionEvent) {
         try {
-            Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("Proveedor/FormProveedor.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("Cliente/FormCLiente.fxml"));
             Stage stage=new Stage();
             stage.setScene(new Scene(parent));
             stage.show();
@@ -23,4 +22,5 @@ public class ProveedorController {
 
         }
     }
+
 }

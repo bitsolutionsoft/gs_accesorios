@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cliente.Cliente">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cliente.ClienteController">
     <children>
         <GridPane>
             <columnConstraints>
@@ -18,10 +18,10 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Button mnemonicParsing="false" text="Ingresar Cliente" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                <TextField promptText="Buscar..." GridPane.rowIndex="2" />
-                <ComboBox prefWidth="150.0" promptText="Categoria" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <ComboBox prefWidth="150.0" promptText="Ordenar por:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <Button fx:id="btnIngresarNuevo" mnemonicParsing="false" onAction="#nuevoCliente" prefHeight="25.0" prefWidth="201.0" text="Ingresar Nuevo Proveedor" GridPane.columnIndex="2" />
+                <TextField fx:id="txtBuscar" prefHeight="37.0" prefWidth="365.0" promptText="Buscar..." GridPane.rowIndex="1" />
+                <ComboBox fx:id="cbCategoria" prefHeight="25.0" prefWidth="178.0" promptText="Categoria" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <ComboBox fx:id="cbOrdenar" prefHeight="25.0" prefWidth="199.0" promptText="Ordenar por:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </children>
