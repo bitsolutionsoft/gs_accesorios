@@ -1,6 +1,6 @@
 package Producto;
 
-import Producto.DAO.Data;
+import Producto.DAO.DataProducto;
 import Producto.DAO.Producto;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -27,7 +27,7 @@ public class ProductoController implements Initializable {
     public TextField txtBuscar;
     public ComboBox<String> cbCategoria;
     public ComboBox <String>  cbOrdenar;
-    Data datos=new Data();
+    DataProducto datos=new DataProducto();
     String hcambio="";
     RowProducto rowProducto=new RowProducto();
 
@@ -55,8 +55,10 @@ productos.addListener(new ListChangeListener<Producto>() {
 
 //inixcair las listas para el ListView y combobox
     public void initLista(){
+
         productos =FXCollections.observableArrayList(datos.viewProducto("viewall"));
         proData=new FilteredList<Producto>(productos,s->true);
+        System.out.println("actualizar lista");
     }
 
     //combobox ordenar por
@@ -166,7 +168,7 @@ productos.addListener(new ListChangeListener<Producto>() {
     }
     public   void refreshList(Producto pro){
 if (pro!=null){
-    Data data=new Data();
+    DataProducto data=new DataProducto();
     data.crudProducto(pro,"delete");
             initLista();
          llenarListaProducto();

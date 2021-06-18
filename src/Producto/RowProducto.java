@@ -1,6 +1,5 @@
 package Producto;
 
-import Producto.DAO.Data;
 import Producto.DAO.Producto;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -125,12 +123,12 @@ public class RowProducto implements Initializable {
 //esta funcion es para iniciar los botones y sus respectivos iconos
         initButton();
 
-        btnEditar.setOnAction(new EventHandler<ActionEvent>() {
+/*      btnEditar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println(codigo.getText().toString());
             }
-        });
+        });*/
 
         btnAgregar.setOnAction(new EventHandler<ActionEvent>() {
             @Override

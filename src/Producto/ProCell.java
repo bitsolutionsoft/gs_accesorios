@@ -1,13 +1,15 @@
 package Producto;
 
-import Producto.DAO.Data;
+import Producto.DAO.DataProducto;
 import Producto.DAO.Producto;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -29,20 +31,68 @@ public class ProCell extends ListCell<Producto> {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Producto pro=new Producto(Integer.parseInt(rowProducto.codigo.getText()),"x","x","x",0,0,0,0,0,0,0,0,0,"No Activo");
-                Data datos=new Data();
+                DataProducto datos=new DataProducto();
                 datos.crudProducto(pro,"delete");
+                ProductoController productoController=new ProductoController();
+                productoController.initLista();
+                getListView().refresh();
 
-
-                for (int i=0;i<getListView().getItems().size();i++){
+              /*  for (int i=0;i<getListView().getItems().size();i++){
                     if (Integer.parseInt(rowProducto.codigo.getText())==getListView().getItems().get(i).getCodigo()){
                         getListView().getItems().get(i).setEstado("No Activo");
                         getListView().refresh();
                     }
-                }
+                }*/
 
             }
 
         });
+        
+        rowProducto.btnEditar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Producto producto=new Producto();
+                for (int i=0;i<getListView().getItems().size();i++){
+                    if (Integer.parseInt(rowProducto.codigo.getText())==getListView().getItems().get(i).getCodigo()){
+                        producto.setCodigo(getListView().getItems().get(i).getCodigo());
+                        producto.setNombre(getListView().getItems().get(i).getNombre());
+                        producto.setModelo(getListView().getItems().get(i).getModelo());
+                        producto.setEspecificacion(getListView().getItems().get(i).getEspecificacion());
+                        producto.setStock(getListView().getItems().get(i).getStock());
+                        producto.setMaximo(getListView().getItems().get(i).getMaximo());
+                        producto.setMinimo(getListView().getItems().get(i).getMinimo());
+                        producto.setPrecio_compra(getListView().getItems().get(i).getPrecio_compra());
+                        producto.setPrecio_mayorista(getListView().getItems().get(i).getPrecio_mayorista());
+                        producto.setPrecio_mayor(getListView().getItems().get(i).getPrecio_mayor());
+                        producto.setPrecio_unidad(getListView().getItems().get(i).getPrecio_unidad());
+                        producto.setColocacion(getListView().getItems().get(i).getColocacion());
+                        producto.setProveedor(getListView().getItems().get(i).getProveedor());
+                        producto.setEstado(getListView().getItems().get(i).getEstado());
+
+                    }
+                }
+                try {
+                    FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("Producto/FormProducto.fxml"));
+                    Parent parent = loader.load();
+                    Stage stage=new Stage();
+                    stage.setTitle("Modificar producto");
+                    stage.setScene(new Scene(parent));
+                    FormProducto formProducto=loader.<FormProducto>getController();
+                    formProducto.pasarRegistro(producto);
+                    stage.show();
+                    stage.setOnHiding((event ->{
+                        ProductoController productoController=new ProductoController();
+                        productoController.initLista();
+                        getListView().refresh();
+                    }));
+
+                }catch (IOException e){
+                    e.printStackTrace();
+
+                }
+            }
+        });
+
 
     }
 //aqui llenas la lista con  el rowProducto

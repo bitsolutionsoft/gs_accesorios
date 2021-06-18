@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Data {
+public class DataProducto {
 
    public ArrayList<Producto> viewProducto(String accion){
 

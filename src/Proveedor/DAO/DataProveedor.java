@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Data {
+public class DataProveedor {
     public ArrayList<Proveedor> viewProveedor(String accion){
 
 
@@ -17,7 +17,7 @@ public class Data {
             Conexion conexion =new Conexion();
 
             conexion.Conexion();
-            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_proveedor(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);}");
+            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_proveedor(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
             callableStatement.setInt(1,0);
             callableStatement.setString(2,"");
             callableStatement.setString(3,"");
