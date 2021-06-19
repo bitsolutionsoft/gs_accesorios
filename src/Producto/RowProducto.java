@@ -39,6 +39,7 @@ public class RowProducto implements Initializable {
     public Button btnEditar;
     public HBox rootRow;
     public Button btnAgregar;
+    public Label precioCompra;
     private Producto productos;
     //El estilo de cada boton
     private final String estiloBoton="" +
@@ -89,9 +90,10 @@ public class RowProducto implements Initializable {
         proveedor.setText(String.valueOf(texto));
     }
 
-    public void setNombre(String texto) {
-        nombre.setText(texto);
-    }
+    public void setNombre(String texto) { nombre.setText(texto); }
+
+    public void  setPrecioCompra(Float texto){precioCompra.setText(String.valueOf(texto));}
+
 //para el esta si es activo  que aplicacio el estilo activo de lo contrario el no activo
     public void setEstado(String texto) {
         estado.setText(texto);
@@ -121,47 +123,14 @@ public class RowProducto implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-//esta funcion es para iniciar los botones y sus respectivos iconos
+
         initButton();
 
-/*      btnEditar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println(codigo.getText().toString());
-            }
-        });*/
-
-        btnAgregar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (estado.getText().equals("No Activo")){
-                    System.out.println("Por favor Active el estado del producto para pode agregar al inventario");
-                }else {
-                    try {
-                        Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("Producto/FormProducto.fxml"));
-                        Stage stage=new Stage();
-                        stage.setScene(new Scene(parent));
-                        stage.show();
-
-                    }catch (IOException e){
-                        e.printStackTrace();
-                    }
-
-
-
-                }
-
-            }
-        });
     }
 
 public void setAncho(Double ancho){rootRow.setPrefWidth(ancho);}
 
-    public void pasar(Producto producto){
-      if (producto!=null){
-          productos=producto;
-      }
-    }
+
     //colocar icono, estilo y tamaño de los botones
     public void initButton(){
         btnEditar.setGraphic(icono("/img/edit.png"));

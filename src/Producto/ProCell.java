@@ -1,5 +1,6 @@
 package Producto;
 
+import ClassAux.Util;
 import Producto.DAO.DataProducto;
 import Producto.DAO.Producto;
 import javafx.event.ActionEvent;
@@ -86,6 +87,26 @@ public class ProCell extends ListCell<Producto> {
         });
 
 
+        rowProducto.btnAgregar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (rowProducto.estado.getText().equals("No Activo")) {
+                    Util.Error("Producto", "Por favor Active el estado del producto para pode agregar al inventario");
+
+                } else {
+                    try {
+                        Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("Producto/FormProducto.fxml"));
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(parent));
+                        stage.show();
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+        });
     }
 //aqui llenas la lista con  el rowProducto
     @Override
@@ -110,6 +131,7 @@ public class ProCell extends ListCell<Producto> {
         rowProducto.setNombre(producto.getNombre()+"  "+producto.getModelo()+"  "+producto.getEspecificacion());
         rowProducto.setEstado(producto.getEstado());
         rowProducto.setColocacion(producto.getColocacion());
+        rowProducto.setPrecioCompra(producto.getPrecio_compra());
         rowProducto.setpMayorista(producto.getPrecio_mayorista());
         rowProducto.setpMayor(producto.getPrecio_mayor());
         rowProducto.setpUnidad(producto.getPrecio_unidad());
