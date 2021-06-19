@@ -4,17 +4,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Producto.FormProducto">
+<GridPane id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="771.0" stylesheets="/Style/StyleForm.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Producto.FormProducto">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="20.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="571.0" minWidth="10.0" prefWidth="542.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="0.0" prefWidth="21.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints maxHeight="94.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="650.0" minHeight="10.0" prefHeight="491.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="146.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="70.0" minHeight="7.0" prefHeight="22.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="94.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="650.0" minHeight="10.0" prefHeight="587.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="146.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="70.0" minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
         <GridPane hgap="5.0" vgap="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -66,10 +66,10 @@
                 <Label text="Colocación" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
                 <Label text="Proveedor" GridPane.rowIndex="12" GridPane.valignment="CENTER" />
                 <Label text="Estado" GridPane.rowIndex="13" GridPane.valignment="CENTER" />
-                <ComboBox fx:id="cbColocacion" prefHeight="25.0" prefWidth="374.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                <ComboBox fx:id="cbProveedor" prefHeight="25.0" prefWidth="376.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                <Button fx:id="btnNuevaColocacion" mnemonicParsing="false" onAction="#IngresarNuevaColocacion" text="Nueva Ciolocaion" GridPane.columnIndex="2" GridPane.rowIndex="11" />
-                <Button fx:id="btnNuevoProveedor" mnemonicParsing="false" onAction="#ingresarNuevoProveedor" text="Nuevo Proveedor" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+                <ComboBox fx:id="cbColocacion" prefHeight="25.0" prefWidth="374.0" promptText="Seleccionar Colocación" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                <ComboBox fx:id="cbProveedor" prefHeight="25.0" prefWidth="376.0" promptText="Seleccionar Proveedor" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                <Button id="btnSecundario" fx:id="btnNuevaColocacion" mnemonicParsing="false" onAction="#IngresarNuevaColocacion" text="Nueva Colocación" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+                <Button id="btnSecundario" fx:id="btnNuevoProveedor" mnemonicParsing="false" onAction="#ingresarNuevoProveedor" text="Nuevo Proveedor" GridPane.columnIndex="2" GridPane.rowIndex="12" />
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER">
                     <children>
                         <CheckBox fx:id="chbActivo" mnemonicParsing="false" onAction="#estadoActivo" text="Activo" />
@@ -81,7 +81,7 @@
                 </HBox>
             </children>
         </GridPane>
-        <Button fx:id="btnIngresarProducto" mnemonicParsing="false" onAction="#RegistrarProducto" prefHeight="30.0" prefWidth="291.0" text="Ingresar Producto" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-        <Label fx:id="labelTitulo" text="Ingreso de producto" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+        <Button id="btnPrimario" fx:id="btnIngresarProducto" mnemonicParsing="false" onAction="#RegistrarProducto" prefHeight="30.0" prefWidth="291.0" text="Ingresar Producto" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+        <Label id="tituloForm" fx:id="labelTitulo" text="Datos del producto" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
     </children>
 </GridPane>

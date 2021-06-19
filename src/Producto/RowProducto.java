@@ -50,15 +50,16 @@ public class RowProducto implements Initializable {
 
     //estilo de los estados
     private final String estadoActivo="" +
-            "-fx-background-color:#00EB59;" +
+            "-fx-background-color:#54dea7;" +
             "-fx-text-fill:#ffffff;"+
-
+            "-fx-font-weight: bold;"+
             "-fx-background-radius:10px;"+
             "-fx-margin:5px 0px 10px 0px;"
 
             ;    private final String estadoNoActivo="" +
             "-fx-background-color:#F03F37;" +
             "-fx-background-radius:10px;"+
+            "-fx-font-weight: bold;"+
             "-fx-margin:5px 0px 10px 0px;"+
              "-fx-text-fill:#ffffff;"
 

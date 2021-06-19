@@ -51,7 +51,7 @@
     -fx-background-color: white;
     }
 .combo-box{
-  -fx-background-color:  #54dea7;;
+  -fx-background-color:  #54dea7;
 }
 .combo-box .cell:selected{
     -fx-font-size: 14px;

@@ -34,16 +34,8 @@ public class ProCell extends ListCell<Producto> {
                 DataProducto datos=new DataProducto();
                 datos.crudProducto(pro,"delete");
                 ProductoController productoController=new ProductoController();
-                productoController.initLista();
+                productoController.initLista(getListView());
                 getListView().refresh();
-
-              /*  for (int i=0;i<getListView().getItems().size();i++){
-                    if (Integer.parseInt(rowProducto.codigo.getText())==getListView().getItems().get(i).getCodigo()){
-                        getListView().getItems().get(i).setEstado("No Activo");
-                        getListView().refresh();
-                    }
-                }*/
-
             }
 
         });
@@ -82,7 +74,7 @@ public class ProCell extends ListCell<Producto> {
                     stage.show();
                     stage.setOnHiding((event ->{
                         ProductoController productoController=new ProductoController();
-                        productoController.initLista();
+                        productoController.initLista(getListView());
                         getListView().refresh();
                     }));
 

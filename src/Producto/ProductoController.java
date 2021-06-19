@@ -27,38 +27,40 @@ public class ProductoController implements Initializable {
     public TextField txtBuscar;
     public ComboBox<String> cbCategoria;
     public ComboBox <String>  cbOrdenar;
-    DataProducto datos=new DataProducto();
-    String hcambio="";
-    RowProducto rowProducto=new RowProducto();
 
-    ObservableList<Producto> productos ;
-    FilteredList<Producto> proData;
+
+
+
+  static    ObservableList<Producto> productos ;
+  static    FilteredList<Producto> proData;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        initLista();
+        initLista(listProducto);
         llenarListaProducto();
         llenarCategoria();
         llenarOrdenarPor();
 
-//evento para detectar si hay cambios en la lista
-productos.addListener(new ListChangeListener<Producto>() {
-    @Override
-    public void onChanged(Change<? extends Producto> change) {
-      initLista();
-      llenarListaProducto();
-    }
-});
 
     }
 
 //inixcair las listas para el ListView y combobox
-    public void initLista(){
-
+    public void initLista(ListView<Producto> listview){
+        DataProducto datos=new DataProducto();
         productos =FXCollections.observableArrayList(datos.viewProducto("viewall"));
         proData=new FilteredList<Producto>(productos,s->true);
-        System.out.println("actualizar lista");
+        listview.setItems(proData);
+        //para llenar las filas personalizadas
+
+        listview.setCellFactory(new Callback<ListView<Producto>, ListCell<Producto>>() {
+            @Override
+            public ListCell<Producto> call(ListView<Producto> param) {
+                ProCell proCell=new ProCell();
+                return proCell;
+            }
+        });
+
     }
 
     //combobox ordenar por
@@ -130,18 +132,7 @@ productos.addListener(new ListChangeListener<Producto>() {
 //llenarel list View
 
     public void llenarListaProducto(){
-//para mandar la list al listview
-        listProducto.setItems(proData);
-        //para llenar las filas personalizadas
 
-        listProducto.setCellFactory(new Callback<ListView<Producto>, ListCell<Producto>>() {
-            @Override
-            public ListCell<Producto> call(ListView<Producto> param) {
-                ProCell proCell=new ProCell();
-                return proCell;
-            }
-        });
-        //capturar el texto y filtrar
         txtBuscar.textProperty().addListener((prop,old,text) ->{
             proData.setPredicate(producto ->{
                 if (text==null || text.isEmpty()){
@@ -166,25 +157,17 @@ productos.addListener(new ListChangeListener<Producto>() {
 
 
     }
-    public   void refreshList(Producto pro){
-if (pro!=null){
-    DataProducto data=new DataProducto();
-    data.crudProducto(pro,"delete");
-            initLista();
-         llenarListaProducto();
-}
-
-
-    }
 
     public void nuevoProducto(ActionEvent actionEvent) {
         try {
             Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("Producto/FormProducto.fxml"));
             Stage stage=new Stage();
             stage.setScene(new Scene(parent));
-            stage.show();
+            stage.  show();
+            stage.setTitle("Ingresar nuevo producto");
             stage.setOnHiding((event ->{
-                initLista();
+                initLista(listProducto);
+               // llenarListaProducto();
                 listProducto.refresh();
             }));
 

@@ -1,5 +1,6 @@
 package Producto.DAO;
 
+import ClassAux.Util;
 import Conexion.Conexion;
 import Producto.DAO.Producto;
 import javafx.collections.FXCollections;
@@ -60,8 +61,11 @@ public class DataProducto {
            callableStatement.close();
            conexion.con.close();
            resultSet.close();
+
        } catch (SQLException throwables) {
            throwables.printStackTrace();
+           Util.Error("Producto","Algo salio mal revise:"+ throwables);
+
        }
 
        return lista;
@@ -90,13 +94,14 @@ public class DataProducto {
             callableStatement.setString(14,producto.estado);
             callableStatement.setString(15,accion);
              callableStatement.execute();
-           System.out.println("Registrado con exito");
+            Util.Exito("Producto","El registro fue realizado con exito");
 
             callableStatement.close();
             conexion.con.close();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            Util.Error("Producto","Algo salio mal revise:"+ throwables);
         }
 
 

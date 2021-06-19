@@ -6,6 +6,7 @@ module gs.accesorios {
 
     requires mysql.connector.java;
     requires java.sql;
+    requires TrayNotification;
 
 
     opens Menu;
@@ -22,5 +23,7 @@ module gs.accesorios {
     opens Venta;
     opens Proveedor;
     opens Proveedor.DAO;
+    opens ClassAux;
+
 
 }

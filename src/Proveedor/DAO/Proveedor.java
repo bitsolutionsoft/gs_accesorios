@@ -89,4 +89,20 @@ public class Proveedor {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return //"Proveedor{" +
+               // "idProveedor=" + idProveedor +
+                //", telefonoUno=" + telefonoUno +
+                //", telefonoDos=" + telefonoDos +
+                " " + nombre +
+                " " + apellido +
+                ";  " + compania +
+                "; " + direccion
+               // ", sexo='" + sexo + '\'' +
+               // ", estado='" + estado + '\'' +
+               // '}'
+                ;
+    }
 }

@@ -1,0 +1,94 @@
+#fondo{
+-fx-background-color:#ffffff;
+}
+#tituloForm{
+-fx-text-fill:#666666;
+-fx-font-size:16px;
+-fx-font-weight:bold;
+}
+.label{
+-fx-text-fill:#666666;
+-fx-font-size:12px;
+-fx-font-weight:bold;
+}
+
+/*estilo de los campos de texto*/
+.text-field{
+     -fx-background-insets: 0;
+     -fx-background-color: white;
+     -fx-border-color: #edebe9;
+ -fx-border-width: 1.5px;
+     -fx-font-size: 14px;
+
+ }
+ .text-field: focused{
+     -fx-background-insets: 0;
+     -fx-background-color: white;
+     -fx-border-color: #1495cc;
+ -fx-border-width: 1.5px;
+-fx-font-size: 14px;
+ }
+
+/*
+estilo de los combobox
+*/
+
+.combo-box{
+ -fx-background-color: transparent;
+    -fx-border-color:#E6E6E6;
+       -fx-border-style:solid;
+       -fx-border-width:1;
+  }
+  .combo-box .arrow{
+      -fx-background-color: #f05d5e;
+  }
+  .combo-box .cell:selected{
+      -fx-font-size: 14px;
+     /* -fx-font-weight: bold;*/
+      -fx-text-fill: #666666;
+  }
+  .combo-box .list-view .list-cell{
+     /* -fx-font-weight: bold;*/
+      -fx-font-size: 14px;
+  }
+
+  .combo-box .list-view .list-cell:hover{
+  -fx-background-color:  #b88c9e;
+  }
+   .combo-box .list-view .list-cell:selected{
+       -fx-background-color:  #00c2d1;
+  }
+/* estilo de los botones*/
+#btnPrimario{
+-fx-background-color:#325FD4;
+-fx-background-radius: 10px;
+-fx-text-fill:white;
+-fx-font-size: 14px;
+-fx-font-weight:bold;
+}
+#btnSecundario{
+-fx-background-color:white;
+-fx-border-color:#325FD4;
+-fx-border-radius: 10px;
+-fx-text-fill:#325FD4;
+-fx-font-size: 14px;
+-fx-font-weight:bold;
+}
+
+/*estilo de los chech box*/
+
+.check-box .box{
+         -fx-background-color: white;
+            -fx-border-color: #54dea7;
+         -fx-border-width: 0.5px 0.5px 0.5px 0.5px;
+}
+.check-box:selected .box{
+         -fx-background-color:#54dea7;
+            -fx-border-color: #54dea7;
+         -fx-border-width: 0.5px 0.5px 0.5px 0.5px;
+         -fx-check-fill:white;
+}
+
+.check-box:selected .mark{
+         -fx-background-color: white;
+}

@@ -1,4 +1,6 @@
 package Conexion;
+import ClassAux.Util;
+
 import  java.sql.*;
 
 public class Conexion {
@@ -14,9 +16,9 @@ public class Conexion {
             String Sll="&useSSL=false";
             String conexionstr=String.format("jdbc:mysql://%s/%s?%s%s",server,db,horario,Sll);
             con=DriverManager.getConnection(conexionstr,user,pass);
-            System.out.println("conexion establecida");
+
         }catch (SQLException e){
-            System.out.println("error de conexion"+e);
+            Util.Error("conexion a la base de datos","Algo salio mal revise: "+ e);
             e.printStackTrace();
         }
         return con;
