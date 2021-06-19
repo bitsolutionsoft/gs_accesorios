@@ -75,12 +75,12 @@
 /*estilo de titulo articulo*/
 #tituloItem{
 -fx-text-fill:#343434;
--fx-font-size: 17px;
+-fx-font-size: 14px;
 -fx-font-weight:bold;
 }
 #subtituloItem{
 -fx-text-fill:#666666;
--fx-font-size: 15px;
+-fx-font-weight:bold;
 
 }
 #descripcionItem{

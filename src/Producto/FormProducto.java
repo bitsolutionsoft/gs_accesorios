@@ -3,21 +3,22 @@ package Producto;
 import ClassAux.Util;
 import Colocacion.DAO.Colocacion;
 import Colocacion.DAO.DataColocacion;
+import Producto.DAO.DataLote;
 import Producto.DAO.DataProducto;
+import Producto.DAO.Lote;
 import Producto.DAO.Producto;
 import Proveedor.DAO.DataProveedor;
 import Proveedor.DAO.Proveedor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -46,18 +47,22 @@ public class FormProducto implements Initializable {
     public TextField txtModelo;
     public TextField txtNombre;
     public TextField txtCodigo;
+    public TextField txtIdlote;
+    public Label labelTitulo;
     private   String accion="new";
     private String estado="Activo";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-estado("Activo");
+        estado("Activo");
+        labelTitulo.setText("Ingresar Producto");
         iniciar_combo_pro_col(0,0);
     }
 
     public void pasarRegistro(Producto producto){
         if (producto !=null){
             accion="update";
+            labelTitulo.setText("Modificar datos del producto");
             txtCodigo.setText(String.valueOf(producto.getCodigo()));
             txtCodigo.setEditable(false);
             txtNombre.setText(producto.getNombre());
@@ -70,7 +75,8 @@ estado("Activo");
             txtPrecioMayorista.setText(String.valueOf(producto.getPrecio_mayorista()));
             txtPrecioMayor.setText(String.valueOf(producto.getPrecio_mayor()));
             txtPrecioUnidad.setText(String.valueOf(producto.getPrecio_unidad()));
-            iniciar_combo_pro_col(producto.getProveedor(),producto.getColocacion());
+            txtIdlote.setText(String.valueOf(producto.getIdlote()));
+            iniciar_combo_pro_col(producto.getIdproveedor(),producto.getIdcolocacion());
 
             estado(producto.getEstado());
             btnIngresarProducto.setText("Actualizar Producto");
@@ -102,6 +108,9 @@ estado("Activo");
         if (returnProducto()!=null){
             DataProducto dataProducto=new DataProducto();
             dataProducto.crudProducto(returnProducto(),accion);
+            Lote lote=new Lote(returnProducto().getIdlote(), returnProducto().getCodigo(),returnProducto().getStock(),returnProducto().getPrecio_compra(),returnProducto().getPrecio_mayorista(),returnProducto().getPrecio_mayor(),returnProducto().getPrecio_unidad(),returnProducto().getEstado());
+            DataLote dataLote=new DataLote();
+            dataLote.crudLote(lote,accion);
             limpiar();
         }
 
@@ -200,10 +209,10 @@ estado("Activo");
 public  Producto returnProducto(){
         Producto producto=new Producto();
         if (txtCodigo.getText().isEmpty()){
-            Util.Error("Error","El campo  codigo esta vacío");
-            return null;
+            producto.setCodigo(0);
         }else{
             producto.setCodigo(Integer.parseInt(txtCodigo.getText()));
+        }
             if (txtNombre.getText().isEmpty()){
                 Util.Error("Error","El campo  nombre esta vacío");
                 return null;
@@ -233,7 +242,7 @@ public  Producto returnProducto(){
                                     Util.Error("Error","El campo  cantidad minima  esta vacío");
                                     return null;
                                 }else{
-                                    producto.setMinimo(Integer.parseInt(txtMaxima.getText()));
+                                    producto.setMinimo(Integer.parseInt(txtMinima.getText()));
                                     if (txtPrecioCompra.getText().isEmpty()){
                                         Util.Error("Error","El campo  precio compra esta vacío");
                                         return null;
@@ -258,18 +267,25 @@ public  Producto returnProducto(){
                                                         Util.Error("Error","Seleccione la colocacion del producto");
                                                         return null;
                                                     }else{
-                                                        producto.setColocacion(cbColocacion.getSelectionModel().getSelectedItem().getIdColocacion());
+                                                        producto.setIdcolocacion(cbColocacion.getSelectionModel().getSelectedItem().getIdColocacion());
                                                         if (cbProveedor.getSelectionModel().isEmpty()){
                                                             Util.Error("Error","Seleccione el proveedor del producto");
                                                             return null;
                                                         }else {
-                                                            producto.setProveedor(cbProveedor.getSelectionModel().getSelectedItem().getIdProveedor());
+                                                            producto.setIdproveedor(cbProveedor.getSelectionModel().getSelectedItem().getIdProveedor());
                                                             if (estado.isEmpty()){
                                                                 Util.Error("Error","Seleccione el estado del producto");
                                                                 return null;
                                                             }else {
                                                                 producto.setEstado(estado);
-                                                                return producto;
+                                                                if (txtIdlote.getText().isEmpty()){
+                                                                    producto.setIdlote(0);
+                                                                    return  producto;
+                                                                }else{
+                                                                    producto.setIdlote(Integer.parseInt( txtIdlote.getText()));
+                                                                    return producto;
+                                                                }
+
                                                             }
                                                         }
                                                     }
@@ -283,7 +299,7 @@ public  Producto returnProducto(){
                         }
                     }
                 }
-            }
+
         }
 
 }
@@ -300,6 +316,7 @@ public  void limpiar(){
         txtPrecioMayorista.setText("");
         txtPrecioMayor.setText("");
         txtPrecioUnidad.setText("");
+        txtIdlote.setText("");
         cbProveedor.getSelectionModel().clearSelection();
         cbColocacion.getSelectionModel().clearSelection();
 }

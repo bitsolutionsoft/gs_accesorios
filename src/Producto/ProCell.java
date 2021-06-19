@@ -1,7 +1,9 @@
 package Producto;
 
 import ClassAux.Util;
+import Producto.DAO.DataLote;
 import Producto.DAO.DataProducto;
+import Producto.DAO.Lote;
 import Producto.DAO.Producto;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,10 +11,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class ProCell extends ListCell<Producto> {
     //declaramos un nodo y un objeto de rowproducto
@@ -31,12 +36,60 @@ public class ProCell extends ListCell<Producto> {
         rowProducto.btnEliminar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Producto pro=new Producto(Integer.parseInt(rowProducto.codigo.getText()),"x","x","x",0,0,0,0,0,0,0,0,0,"No Activo");
+                Lote lote=new Lote(Integer.parseInt( rowProducto.idlote.getText()),Integer.parseInt(rowProducto.codigo.getText()),0,0,0,0,0,"");
+
+                if (lote.getIdlote() > 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("lote");
+                    alert.setContentText("¿Esta seguro de eliminar es lote?");
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+                        DataLote dataLote = new DataLote();
+                        dataLote.crudLote(lote, "delete");
+                        ProductoController productoController = new ProductoController();
+                        productoController.initLista(getListView());
+                        getListView().refresh();
+                    }
+                }
+
+                if(lote.getIdlote() <= 0) {
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                    alerta.setTitle("producto");
+
+                    if (rowProducto.estado.getText().equals("Activo")) {
+                        alerta.setContentText("¿Esta seguro de desactivar el producto?");
+                        Optional<ButtonType> resul = alerta.showAndWait();
+                        if ((resul.isPresent()) && (resul.get() == ButtonType.OK)) {
+                            Producto pro = new Producto(Integer.parseInt(rowProducto.codigo.getText()), "x", "x", "x", 0, 0, 0, 0, 0, 0, 0, 0, 0, "No Activo", 0, 0, "", "");
+                            DataProducto datos = new DataProducto();
+                            datos.crudProducto(pro, "delete");
+                            ProductoController productoController = new ProductoController();
+                            productoController.initLista(getListView());
+                            getListView().refresh();
+                        }
+                    }
+
+                else{
+
+                    alerta.setContentText("¿Esta seguro de Activar el producto?");
+                    Optional<ButtonType> resuls=alerta.showAndWait();
+                    if ((resuls.isPresent()) && (resuls.get()==ButtonType.OK)){
+                        Producto pro=new Producto(Integer.parseInt(rowProducto.codigo.getText()),"x","x","x",0,0,0,0,0,0,0,0,0,"Activo",0,0,"","");
+                        DataProducto datos=new DataProducto();
+                        datos.crudProducto(pro,"delete");
+                        ProductoController productoController=new ProductoController();
+                        productoController.initLista(getListView());
+                        getListView().refresh();
+                    }
+                }
+
+                }
+
+                /*
+                Producto pro=new Producto(Integer.parseInt(rowProducto.codigo.getText()),"x","x","x",0,0,0,0,0,0,0,0,0,"No Activo",0,0,"","");
                 DataProducto datos=new DataProducto();
-                datos.crudProducto(pro,"delete");
-                ProductoController productoController=new ProductoController();
-                productoController.initLista(getListView());
-                getListView().refresh();
+                datos.crudProducto(pro,"delete");*/
+
             }
 
         });
@@ -44,45 +97,55 @@ public class ProCell extends ListCell<Producto> {
         rowProducto.btnEditar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Producto producto=new Producto();
-                for (int i=0;i<getListView().getItems().size();i++){
-                    if (Integer.parseInt(rowProducto.codigo.getText())==getListView().getItems().get(i).getCodigo()){
+                if (rowProducto.estado.getText().equals("No Activo")) {
+                    Util.Error("Producto", "Por favor Active  el producto para poder modificar");
+
+                } else {
+                Producto producto = new Producto();
+                for (int i = 0; i < getListView().getItems().size(); i++) {
+                    if (Integer.parseInt(rowProducto.codigo.getText()) == getListView().getItems().get(i).getCodigo()) {
                         producto.setCodigo(getListView().getItems().get(i).getCodigo());
                         producto.setNombre(getListView().getItems().get(i).getNombre());
                         producto.setModelo(getListView().getItems().get(i).getModelo());
                         producto.setEspecificacion(getListView().getItems().get(i).getEspecificacion());
-                        producto.setStock(getListView().getItems().get(i).getStock());
+                        producto.setStock(getListView().getItems().get(i).getCantidad());
                         producto.setMaximo(getListView().getItems().get(i).getMaximo());
                         producto.setMinimo(getListView().getItems().get(i).getMinimo());
                         producto.setPrecio_compra(getListView().getItems().get(i).getPrecio_compra());
                         producto.setPrecio_mayorista(getListView().getItems().get(i).getPrecio_mayorista());
                         producto.setPrecio_mayor(getListView().getItems().get(i).getPrecio_mayor());
                         producto.setPrecio_unidad(getListView().getItems().get(i).getPrecio_unidad());
+                        producto.setIdcolocacion(getListView().getItems().get(i).getIdcolocacion());
+                        producto.setIdproveedor(getListView().getItems().get(i).getIdproveedor());
+                        producto.setEstado(getListView().getItems().get(i).getEstado());
                         producto.setColocacion(getListView().getItems().get(i).getColocacion());
                         producto.setProveedor(getListView().getItems().get(i).getProveedor());
-                        producto.setEstado(getListView().getItems().get(i).getEstado());
+                        producto.setIdlote(getListView().getItems().get(i).getIdlote());
+                        producto.setCantidad(getListView().getItems().get(i).getCantidad());
+
 
                     }
                 }
                 try {
-                    FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("Producto/FormProducto.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Producto/FormProducto.fxml"));
                     Parent parent = loader.load();
-                    Stage stage=new Stage();
+                    Stage stage = new Stage();
                     stage.setTitle("Modificar producto");
                     stage.setScene(new Scene(parent));
-                    FormProducto formProducto=loader.<FormProducto>getController();
+                    FormProducto formProducto = loader.<FormProducto>getController();
                     formProducto.pasarRegistro(producto);
                     stage.show();
-                    stage.setOnHiding((event ->{
-                        ProductoController productoController=new ProductoController();
+                    stage.setOnHiding((event -> {
+                        ProductoController productoController = new ProductoController();
                         productoController.initLista(getListView());
                         getListView().refresh();
                     }));
 
-                }catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
 
                 }
+            }
             }
         });
 
@@ -94,11 +157,33 @@ public class ProCell extends ListCell<Producto> {
                     Util.Error("Producto", "Por favor Active el estado del producto para pode agregar al inventario");
 
                 } else {
+                    Lote lote=new Lote();
+                    for (int i=0;i<getListView().getItems().size();i++){
+                        if (Integer.parseInt(rowProducto.codigo.getText())==getListView().getItems().get(i).getCodigo() && Integer.parseInt(rowProducto.idlote.getText())==getListView().getItems().get(i).getIdlote()){
+                            lote.setPrecio_compra(getListView().getItems().get(i).getPrecio_compra());
+                            lote.setIdproducto(getListView().getItems().get(i).getCodigo());
+                            lote.setPrecio_mayorista(getListView().getItems().get(i).getPrecio_mayorista());
+                            lote.setPrecio_mayor(getListView().getItems().get(i).getPrecio_mayor());
+                            lote.setPrecio_unidad(getListView().getItems().get(i).getPrecio_unidad());
+                            lote.setEstado(getListView().getItems().get(i).getEstado());
+                            lote.setIdlote(getListView().getItems().get(i).getIdlote());
+                            lote.setCantidad(getListView().getItems().get(i).getCantidad());
+                        }
+                    }
                     try {
-                        Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("Producto/FormProducto.fxml"));
-                        Stage stage = new Stage();
+                        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("Producto/NuevoLote.fxml"));
+                        Parent parent = loader.load();
+                        Stage stage=new Stage();
+                        stage.setTitle("Modificar producto");
                         stage.setScene(new Scene(parent));
+                        NuevoLoteController nuevoLoteController=loader.<NuevoLoteController>getController();
+                        nuevoLoteController.pasarRegistro(lote);
                         stage.show();
+                        stage.setOnHiding((event ->{
+                            ProductoController productoController=new ProductoController();
+                            productoController.initLista(getListView());
+                            getListView().refresh();
+                        }));
 
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -139,6 +224,8 @@ public class ProCell extends ListCell<Producto> {
         rowProducto.setMinima(producto.getMinimo());
         rowProducto.setStock(producto.getStock());
         rowProducto.setProveedor(producto.getProveedor());
+        rowProducto.setCantidadlote(producto.getCantidad());
+        rowProducto.setIdlote(producto.getIdlote());
 
         setGraphic(graphic);
     }

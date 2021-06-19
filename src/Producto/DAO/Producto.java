@@ -1,14 +1,17 @@
 package Producto.DAO;
 
 public class Producto {
-    int codigo, stock, minimo,maximo, colocacion,proveedor;
-    String nombre, modelo,especificacion,estado;
+    int codigo, stock, minimo,maximo, idcolocacion,idproveedor,idlote,cantidad;
+    String nombre, modelo,especificacion,estado,proveedor,colocacion;
     Float precio_compra, precio_mayorista,precio_mayor,precio_unidad;
 
     public  Producto(){}
 
 
-    public Producto(int codigo,String nombre, String modelo, String especificacion, int stock, float precio_compra, float precio_mayorista, float precio_mayor, float precio_unidad, int maximo, int minimo, int colocacion, int proveedor,String estado){
+    public Producto(int codigo,String nombre, String modelo, String especificacion, int stock, float precio_compra, float precio_mayorista,
+                    float precio_mayor, float precio_unidad, int maximo, int minimo, int idcolocacion, int idproveedor,String estado,int idlote,
+                    int cantidad, String proveedor, String colocacion
+                    ){
         this.codigo=codigo;
         this.nombre=nombre;
         this.modelo=modelo;
@@ -20,9 +23,14 @@ public class Producto {
         this.precio_unidad=precio_unidad;
         this.maximo=maximo;
         this.minimo=minimo;
-        this.colocacion=colocacion;
-        this.proveedor=proveedor;
+        this.idcolocacion=idcolocacion;
+        this.idproveedor=idproveedor;
         this.estado=estado;
+        this.idlote=idlote;
+        this.cantidad=cantidad;
+        this.proveedor=proveedor;
+        this.colocacion=colocacion;
+
 
     }
 
@@ -56,22 +64,6 @@ public class Producto {
 
     public void setMaximo(int maximo) {
         this.maximo = maximo;
-    }
-
-    public int getColocacion() {
-        return colocacion;
-    }
-
-    public void setColocacion(int colocacion) {
-        this.colocacion = colocacion;
-    }
-
-    public int getProveedor() {
-        return proveedor;
-    }
-
-    public void setProveedor(int proveedor) {
-        this.proveedor = proveedor;
     }
 
     public String getNombre() {
@@ -136,5 +128,53 @@ public class Producto {
 
     public void setPrecio_unidad(Float precio_unidad) {
         this.precio_unidad = precio_unidad;
+    }
+
+    public int getIdcolocacion() {
+        return idcolocacion;
+    }
+
+    public void setIdcolocacion(int idcolocacion) {
+        this.idcolocacion = idcolocacion;
+    }
+
+    public int getIdproveedor() {
+        return idproveedor;
+    }
+
+    public void setIdproveedor(int idproveedor) {
+        this.idproveedor = idproveedor;
+    }
+
+    public int getIdlote() {
+        return idlote;
+    }
+
+    public void setIdlote(int idlote) {
+        this.idlote = idlote;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(String proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    public String getColocacion() {
+        return colocacion;
+    }
+
+    public void setColocacion(String colocacion) {
+        this.colocacion = colocacion;
     }
 }

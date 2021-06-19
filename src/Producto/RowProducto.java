@@ -40,6 +40,8 @@ public class RowProducto implements Initializable {
     public HBox rootRow;
     public Button btnAgregar;
     public Label precioCompra;
+    public Label idlote;
+    public Label cantidadlote;
     private Producto productos;
     //El estilo de cada boton
     private final String estiloBoton="" +
@@ -70,8 +72,8 @@ public class RowProducto implements Initializable {
         codigo.setText(String.valueOf(texto));
     }
 
-    public void setColocacion(int texto) {
-        colocacion.setText(String.valueOf(texto));
+    public void setColocacion(String texto) {
+        colocacion.setText(texto);
     }
 
     public void setMinima(int texto) {
@@ -86,8 +88,8 @@ public class RowProducto implements Initializable {
         stock.setText(String.valueOf(texto));
     }
 
-    public void setProveedor(int texto) {
-        proveedor.setText(String.valueOf(texto));
+    public void setProveedor(String texto) {
+        proveedor.setText(texto);
     }
 
     public void setNombre(String texto) { nombre.setText(texto); }
@@ -100,9 +102,11 @@ public class RowProducto implements Initializable {
         estado.setPadding(new Insets(5));
         if (texto.equals("Activo")){
             estado.setStyle(estadoActivo);
+            initButtonDelete("Activo");
 
         }else{
             estado.setStyle(estadoNoActivo);
+            initButtonDelete("No Activo");
         }
 
     }
@@ -118,6 +122,8 @@ public class RowProducto implements Initializable {
     public void setpUnidad(Float texto) {
         pUnidad.setText(String.valueOf(texto));
     }
+    public  void setIdlote(int texto){idlote.setText(String.valueOf(texto));}
+    public void setCantidadlote(int texto){cantidadlote.setText(String.valueOf(texto));}
 
 
     @Override
@@ -137,7 +143,6 @@ public void setAncho(Double ancho){rootRow.setPrefWidth(ancho);}
         btnEditar.setStyle(estiloBoton);
         btnEditar.setPrefHeight(35);
         btnEditar.setPrefWidth(20);
-        btnEliminar.setGraphic(icono("/img/delete.png"));
         btnEliminar.setStyle(estiloBoton);
         btnEliminar.setPrefHeight(35);
         btnEliminar.setPrefWidth(20);
@@ -145,6 +150,15 @@ public void setAncho(Double ancho){rootRow.setPrefWidth(ancho);}
         btnAgregar.setStyle(estiloBoton);
         btnAgregar.setPrefHeight(35);
         btnAgregar.setPrefWidth(20);
+    }
+    public void initButtonDelete(String status){
+        if (status.equals("Activo")){
+            btnEliminar.setGraphic(icono("/img/delete.png"));
+
+        }else{
+            btnEliminar.setGraphic(icono("/img/active.png"));
+
+        }
     }
     public static ImageView icono(String url){
         ImageView imageView = new ImageView(url);

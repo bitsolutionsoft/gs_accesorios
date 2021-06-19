@@ -4,26 +4,31 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="771.0" stylesheets="/Style/StyleForm.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Producto.FormProducto">
+<GridPane id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="1072.0" stylesheets="/Style/StyleForm.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Producto.FormProducto">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="20.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="571.0" minWidth="10.0" prefWidth="542.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="0.0" prefWidth="21.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="0.0" prefWidth="0.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="953.0" minWidth="10.0" prefWidth="953.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="0.0" prefWidth="22.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints maxHeight="94.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="650.0" minHeight="10.0" prefHeight="587.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="146.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="70.0" minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="94.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="650.0" minHeight="10.0" prefHeight="442.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="146.0" minHeight="0.0" prefHeight="56.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="70.0" minHeight="5.0" prefHeight="20.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
         <GridPane hgap="5.0" vgap="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="168.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="206.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="414.0" minWidth="10.0" prefWidth="138.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="170.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="414.0" minWidth="10.0" prefWidth="148.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="414.0" minWidth="10.0" prefWidth="35.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="414.0" minWidth="10.0" prefWidth="141.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="414.0" minWidth="10.0" prefWidth="210.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="414.0" minWidth="10.0" prefWidth="16.0" />
             </columnConstraints>
             <rowConstraints>
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="72.0" minHeight="8.0" prefHeight="33.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
@@ -33,44 +38,39 @@
                 <RowConstraints maxHeight="155.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="159.0" minHeight="25.0" prefHeight="33.0" />
-                <RowConstraints maxHeight="158.0" minHeight="25.0" prefHeight="35.0" />
-                <RowConstraints maxHeight="139.0" minHeight="0.0" prefHeight="32.0" />
-                <RowConstraints maxHeight="136.0" minHeight="10.0" prefHeight="38.0" />
                 <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="34.0" />
-                <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="32.0" />
-                <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="16.0" />
             </rowConstraints>
             <children>
-                <Label text="Codigo" GridPane.valignment="CENTER" />
-                <TextField fx:id="txtCodigo" GridPane.columnIndex="1" />
-                <Label text="Nombre" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Label text="Modelo" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                <TextField fx:id="txtModelo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Label text="Especificación" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                <TextField fx:id="txtEspecificacion" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <Label text="Cantidad adquiridad" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-                <TextField fx:id="txtCantidad" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <Label text="Cantidada maxima" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
-                <TextField fx:id="txtMaxima" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                <Label text="Cantidada minima" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-                <TextField fx:id="txtMinima" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                <Label text="Precio de Compra" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
-                <TextField fx:id="txtPrecioCompra" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                <Label text="Precio de venta por mayorista" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
-                <TextField fx:id="txtPrecioMayorista" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                <Label text="Precio de venta por mayor" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
-                <TextField fx:id="txtPrecioMayor" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                <Label text="Precio de venta por unidad" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
-                <TextField fx:id="txtPrecioUnidad" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                <Label text="Colocación" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
-                <Label text="Proveedor" GridPane.rowIndex="12" GridPane.valignment="CENTER" />
-                <Label text="Estado" GridPane.rowIndex="13" GridPane.valignment="CENTER" />
-                <ComboBox fx:id="cbColocacion" prefHeight="25.0" prefWidth="374.0" promptText="Seleccionar Colocación" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                <ComboBox fx:id="cbProveedor" prefHeight="25.0" prefWidth="376.0" promptText="Seleccionar Proveedor" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                <Button id="btnSecundario" fx:id="btnNuevaColocacion" mnemonicParsing="false" onAction="#IngresarNuevaColocacion" text="Nueva Colocación" GridPane.columnIndex="2" GridPane.rowIndex="11" />
-                <Button id="btnSecundario" fx:id="btnNuevoProveedor" mnemonicParsing="false" onAction="#ingresarNuevoProveedor" text="Nuevo Proveedor" GridPane.columnIndex="2" GridPane.rowIndex="12" />
-                <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER">
+                <Label text="Codigo" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtCodigo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label text="Nombre" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label text="Modelo" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtModelo" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label text="Especificación" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtEspecificacion" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Label text="Cantidad " GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtCantidad" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <Label text="Cantidada maxima" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtMaxima" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                <Label text="Cantidada minima" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtMinima" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                <Label text="Precio de Compra" GridPane.columnIndex="4" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtPrecioCompra" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                <Label text="Mayorista" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtPrecioMayorista" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                <Label text="Mayor" GridPane.columnIndex="4" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtPrecioMayor" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                <Label text="Unidad" GridPane.columnIndex="4" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtPrecioUnidad" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                <Label text="Colocación" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+                <Label text="Proveedor" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+                <Label text="Estado" GridPane.columnIndex="4" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+                <ComboBox fx:id="cbColocacion" prefHeight="25.0" prefWidth="374.0" promptText="Seleccionar Colocación" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                <ComboBox fx:id="cbProveedor" prefHeight="25.0" prefWidth="376.0" promptText="Seleccionar Proveedor" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                <Button id="btnSecundario" fx:id="btnNuevaColocacion" mnemonicParsing="false" onAction="#IngresarNuevaColocacion" text="Nueva Colocación" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                <Button id="btnSecundario" fx:id="btnNuevoProveedor" mnemonicParsing="false" onAction="#ingresarNuevoProveedor" text="Nuevo Proveedor" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER">
                     <children>
                         <CheckBox fx:id="chbActivo" mnemonicParsing="false" onAction="#estadoActivo" text="Activo" />
                         <CheckBox fx:id="chbNoActivo" mnemonicParsing="false" onAction="#estadoNoActivo" text="No Activo" />
@@ -79,9 +79,14 @@
                         <Insets top="10.0" />
                     </padding>
                 </HBox>
+            <Label id="tituloForm" text="Precios de Venta" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Label text="Codigo lote" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <TextField fx:id="txtIdlote" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Label id="tituloForm" text="Datos del Lote" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label id="tituloForm" text="Datos del Producto" />
             </children>
         </GridPane>
         <Button id="btnPrimario" fx:id="btnIngresarProducto" mnemonicParsing="false" onAction="#RegistrarProducto" prefHeight="30.0" prefWidth="291.0" text="Ingresar Producto" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-        <Label id="tituloForm" fx:id="labelTitulo" text="Datos del producto" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+        <Label id="tituloForm" fx:id="labelTitulo" text="Ingresar Producto" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
     </children>
 </GridPane>

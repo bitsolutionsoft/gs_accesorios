@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="602.0" stylesheets="/Style/StyleForm.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Producto.NuevoLoteController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="55.0" prefWidth="600.0">
+         <children>
+            <Label id="tituloForm" alignment="CENTER" contentDisplay="CENTER" text="Agregar producto" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0" spacing="15.0">
+         <children>
+            <CheckBox fx:id="chbMismoLot" mnemonicParsing="false" onAction="#mismoLote" text="Agregar producto al mismo lote" />
+            <CheckBox fx:id="chbNuevoLote" mnemonicParsing="false" onAction="#nuevoLote" text="Agregar  nuevo lote" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <GridPane prefHeight="334.0" prefWidth="602.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="99.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="168.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" prefWidth="239.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="61.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Codigo lote" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Codigo producto" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Cantidad" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Precio compra" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label id="tituloForm" text="Precios de venta" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Precio a mayoristas" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label text="Precio por mayor" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label text="Precion por unidad" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label text="Estado" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+               <children>
+                  <CheckBox fx:id="chbActivo" mnemonicParsing="false" onAction="#estadoActivo" text="Activo" />
+                  <CheckBox fx:id="chbNoActivo" mnemonicParsing="false" onAction="#estadoNoActivo" text="No Activo" />
+               </children>
+            </HBox>
+            <TextField fx:id="txtidLote" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="txtidproducto" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="txtcantidad" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <TextField fx:id="txtpreciocompra" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <TextField fx:id="txtpreciomayorista" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <TextField fx:id="txtpreciomayor" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <TextField fx:id="txtpreciounidad" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Label id="tituloForm" text="Datos del Lote" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+      <HBox alignment="CENTER" prefHeight="101.0" prefWidth="602.0">
+         <children>
+            <Button id="btnPrimario" fx:id="btnNuevoLote" mnemonicParsing="false" onAction="#AgragarLote" prefHeight="36.0" prefWidth="267.0" text="Agregar" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
