@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -25,8 +26,7 @@ public class ProductoController implements Initializable {
     public ListView<Producto> listProducto;
     public Button btnNuevo;
     public TextField txtBuscar;
-    public ComboBox<String> cbCategoria;
-    public ComboBox <String>  cbOrdenar;
+
 
 
 
@@ -39,8 +39,8 @@ public class ProductoController implements Initializable {
 
         initLista(listProducto);
         llenarListaProducto();
-        llenarCategoria();
-        llenarOrdenarPor();
+
+
 
 
     }
@@ -65,68 +65,8 @@ public class ProductoController implements Initializable {
 
     //combobox ordenar por
 
-    public void llenarOrdenarPor(){
-        ObservableList<String> modelo= FXCollections.observableArrayList();
-        for (int i=0; i<productos.size();i++){
-            ArrayList<String> item=new ArrayList<>();
-            item.add(productos.get(i).getModelo());
-            modelo.addAll(item);
-        }
 
-        cbOrdenar.setPromptText("Seleccione el modelo");
-        cbOrdenar.setItems(modelo);
-        cbOrdenar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                String newText=cbOrdenar.getSelectionModel().getSelectedItem().toLowerCase();
-
-                proData.setPredicate(producto ->{
-                    if (newText==null  || newText.isEmpty()){
-                        return  true;
-                    }
-                    String texto=newText.toLowerCase();
-                    if(producto.getModelo().toLowerCase().contains(texto)){
-                        return true;
-                    }
-
-                    return false;
-                });
-            }
-        });
-
-    }
 // combobox categoria
-    public void llenarCategoria(){
-        ObservableList<String> nombre= FXCollections.observableArrayList();
-        for (int i=0; i<productos.size();i++) {
-            ArrayList<String> item = new ArrayList<>();
-            item.add(productos.get(i).getNombre());
-            nombre.addAll(item);
-        }
-            cbCategoria.setPromptText("Seleccione el nombre");
-            cbCategoria.setItems(nombre);
-
-            cbCategoria.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    String newText=cbCategoria.getSelectionModel().getSelectedItem().toLowerCase();
-
-                    proData.setPredicate(producto ->{
-                        if (newText==null  || newText.isEmpty()){
-                            return  true;
-                        }
-                        String texto=newText.toLowerCase();
-                        if(producto.getNombre().toLowerCase().contains(texto)){
-                            return true;
-                        }
-
-                        return false;
-                    });
-                }
-            });
-
-        }
-
 
 
 //llenarel list View
@@ -165,6 +105,7 @@ public class ProductoController implements Initializable {
             stage.setScene(new Scene(parent));
             stage.  show();
             stage.setTitle("Ingresar nuevo producto");
+            stage.getIcons().add(new Image("/img/icon.png"));
             stage.setOnHiding((event ->{
                 initLista(listProducto);
                // llenarListaProducto();

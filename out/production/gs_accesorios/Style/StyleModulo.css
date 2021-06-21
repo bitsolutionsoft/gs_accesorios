@@ -24,6 +24,7 @@
 -fx-font-size:14px;
 }
 /*Estilo de  los listViews */
+
 .list-cell:filled{
  -fx-background-color: white;
  -fx-border-color:"#edebe9";
@@ -33,7 +34,7 @@
 
   /* para degradado
     -fx-background-color:linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);*/
-  -fx-background-color:"#f7dee6";
+  -fx-background-color:#f7dee6;
     -fx-text-fill: white;
 }
 
@@ -45,25 +46,59 @@
     -fx-background-color: #ceb6e2;
     -fx-text-fill: white;
 }
+/*vertical bar listview*/
+.list-view .scroll-bar:horizontal ,
+.list-view  .scroll-bar:vertical{
+    -fx-background-color:transparent;
+
+}
+.list-view  .increment-button,.list-view  .decrement-button {
+    -fx-background-color:transparent;
+	-fx-border-color:#ceb6e2;
+}
+.list-view .scroll-bar:horizontal .track ,
+.list-view .scroll-bar:vertical .track{
+     -fx-background-color: transparent;
+	 -fx-border-color:#ceb6e2;
+	 -fx-background-radius: 0em;
+}
+
+.list-view .scroll-bar:horizontal .thumb,
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color:#ceb6e2;
+	-fx-background-insets: 0, 0, 0;
+	-fx-background-radius: 0em;
+
+}
+
 /* estilo de los combobox*/
 
-.combo-box .arrow{
-    -fx-background-color: white;
-    }
+
 .combo-box{
-  -fx-background-color:  #54dea7;
-}
-.combo-box .cell:selected{
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-fill: white;
-    -fx-background-color:  #54dea7;
-}
+ -fx-background-color: transparent;
+    -fx-border-color:#E6E6E6;
+       -fx-border-style:solid;
+       -fx-border-width:1;
+  }
+  .combo-box .arrow{
+      -fx-background-color: #f05d5e;
+  }
+  .combo-box .cell:selected{
+      -fx-font-size: 14px;
+     /* -fx-font-weight: bold;*/
+      -fx-text-fill: #666666;
+  }
+  .combo-box .list-view .list-cell{
+     /* -fx-font-weight: bold;*/
+      -fx-font-size: 14px;
+  }
 
-.combo-box .list-view .list-cell:hover{
--fx-background-color:  #54dea7;
-}
-
+  .combo-box .list-view .list-cell:hover{
+  -fx-background-color: #ceb6e2
+  }
+   .combo-box .list-view .list-cell:selected{
+       -fx-background-color:  #ceb6e2
+  }
 /*estilo del boton ingresar nuevo producto*/
 #btnIngresarNuevo{
 -fx-background-color:"#325FD4";
@@ -86,3 +121,21 @@
 #descripcionItem{
 -fx-text-fill:#474747;
 }
+
+
+/*estilo de los campos de texto*/
+.text-field{
+     -fx-background-insets: 0;
+     -fx-background-color: white;
+     -fx-border-color: #edebe9;
+ -fx-border-width: 1.5px;
+     -fx-font-size: 16px;
+
+ }
+ .text-field: focused{
+     -fx-background-insets: 0;
+     -fx-background-color: white;
+     -fx-border-color: #1495cc;
+ -fx-border-width: 1.5px;
+-fx-font-size: 16px;
+ }

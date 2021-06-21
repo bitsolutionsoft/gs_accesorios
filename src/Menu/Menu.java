@@ -46,13 +46,19 @@ public class Menu implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
    iniciarBotones();
-
+        VBox panelCenter=(VBox) vista("/Venta/Venta.fxml");
+        panelCenter.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        panelCenter.setPadding(new Insets(10,10,10,10));
+        Menu.setCenter(panelCenter);
+        cambiarColor(btnVenta);
+        anterior="PuntoVenta";
     }
 
 public  void iniciarBotones(){
 
                 btnProducto.setGraphic(icono("/img/producto.png"));
                 btnProducto.setStyle(estiloBoton);
+
 
                 btnCliente.setGraphic(icono("/img/cliente.png"));
                 btnCliente.setStyle(estiloBoton);
@@ -74,12 +80,14 @@ public static ImageView icono(String url){
         ImageView imageView = new ImageView(url);
         imageView.setFitHeight(25);
         imageView.setFitWidth(25);
+
         return imageView;
 }
 
     public void AbrirVenta(ActionEvent actionEvent) {
         VBox panelCenter=(VBox) vista("/Venta/Venta.fxml");
-        panelCenter.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        panelCenter.setMaxSize(Double.MAX_EXPONENT,Double.MAX_EXPONENT);
+
         panelCenter.setPadding(new Insets(10,10,10,10));
         Menu.setCenter(panelCenter);
         cambiarColor(btnVenta);

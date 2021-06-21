@@ -43,9 +43,12 @@ public class NuevoLoteController implements Initializable {
             switch (accion) {
                 case "new":
                     dataLote.crudLote(returnDatos(), "new");
+                    limpiar();
                     break;
                 case "add":
                     dataLote.crudLote(returnDatos(), "add");
+                    txtcantidad.setText("");
+                   // limpiar();
                     break;
 
             }
@@ -94,12 +97,13 @@ public class NuevoLoteController implements Initializable {
         txtidLote.setText("");
         txtidproducto.setText(String.valueOf(lote.getIdproducto()));
         txtidproducto.setEditable(false);
+        txtidLote.setEditable(false);
         txtpreciocompra.setText("");
         txtpreciomayorista.setText("");
         txtpreciomayor.setText("");
         txtpreciounidad.setText("");
         Estado("Activo");
-        txtidLote.setEditable(true);
+
         txtidproducto.setEditable(true);
         txtpreciocompra.setEditable(true);
         txtpreciomayorista.setEditable(true);
@@ -114,9 +118,11 @@ public class NuevoLoteController implements Initializable {
            if (datosLote.getIdlote()>0){
             AccionLote("add");
            llenardatos(datosLote);
+
            }else{
                AccionLote("new");
                llenarNuevoLote(datosLote);
+
            }
 
         }
@@ -204,5 +210,14 @@ public class NuevoLoteController implements Initializable {
                 }
 
         }
+    }
+
+    public  void limpiar(){
+        txtcantidad.setText("");
+        txtpreciocompra.setText("");
+        txtpreciomayorista.setText("");
+        txtpreciomayor.setText("");
+        txtpreciounidad.setText("");
+        Estado("Activo");
     }
 }

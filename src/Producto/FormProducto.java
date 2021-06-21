@@ -108,7 +108,8 @@ public class FormProducto implements Initializable {
         if (returnProducto()!=null){
             DataProducto dataProducto=new DataProducto();
             dataProducto.crudProducto(returnProducto(),accion);
-            Lote lote=new Lote(returnProducto().getIdlote(), returnProducto().getCodigo(),returnProducto().getStock(),returnProducto().getPrecio_compra(),returnProducto().getPrecio_mayorista(),returnProducto().getPrecio_mayor(),returnProducto().getPrecio_unidad(),returnProducto().getEstado());
+
+            Lote lote=new Lote(returnProducto().getIdlote(), returnProducto().getCodigo(),returnProducto().getStock(),returnProducto().getPrecio_compra(),returnProducto().getPrecio_mayorista(),returnProducto().getPrecio_mayor(),returnProducto().getPrecio_unidad(),estadoLote(returnProducto().getStock()));
             DataLote dataLote=new DataLote();
             dataLote.crudLote(lote,accion);
             limpiar();
@@ -116,6 +117,13 @@ public class FormProducto implements Initializable {
 
 
 
+    }
+    public String estadoLote(int cantidad){
+        if (cantidad>0){
+            return "Activo";
+        }else{
+            return "No Activo";
+        }
     }
 
     public void IngresarNuevaColocacion(ActionEvent actionEvent) {
@@ -319,6 +327,7 @@ public  void limpiar(){
         txtIdlote.setText("");
         cbProveedor.getSelectionModel().clearSelection();
         cbColocacion.getSelectionModel().clearSelection();
+        estado("Activo");
 }
 
 }

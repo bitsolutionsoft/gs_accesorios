@@ -1,5 +1,6 @@
 package Producto;
 
+import ClassAux.AlertDialog;
 import ClassAux.Util;
 import Producto.DAO.DataLote;
 import Producto.DAO.DataProducto;
@@ -14,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,6 +23,8 @@ import java.util.Optional;
 
 public class ProCell extends ListCell<Producto> {
     //declaramos un nodo y un objeto de rowproducto
+    AlertDialog alertDialog=new AlertDialog();
+
     private Node graphic;
     private RowProducto rowProducto;
     // el constructor donde llamamos el el rowproducto
@@ -36,44 +40,31 @@ public class ProCell extends ListCell<Producto> {
         rowProducto.btnEliminar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Lote lote=new Lote(Integer.parseInt( rowProducto.idlote.getText()),Integer.parseInt(rowProducto.codigo.getText()),0,0,0,0,0,"");
+                Lote lote=new Lote(Integer.parseInt( rowProducto.idlote.getText()),Integer.parseInt(rowProducto.codigo.getText()),0,0,0,0,0,rowProducto.estado.getText());
 
-                if (lote.getIdlote() > 0) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("lote");
-                    alert.setContentText("¿Esta seguro de eliminar es lote?");
-                    Optional<ButtonType> result = alert.showAndWait();
-                    if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-                        DataLote dataLote = new DataLote();
-                        dataLote.crudLote(lote, "delete");
-                        ProductoController productoController = new ProductoController();
-                        productoController.initLista(getListView());
-                        getListView().refresh();
-                    }
-                }
+                if (lote.getEstado().equals("Activo")) {
+                    if (lote.getIdlote() > 0) {
 
-                if(lote.getIdlote() <= 0) {
-                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                    alerta.setTitle("producto");
-
-                    if (rowProducto.estado.getText().equals("Activo")) {
-                        alerta.setContentText("¿Esta seguro de desactivar el producto?");
-                        Optional<ButtonType> resul = alerta.showAndWait();
-                        if ((resul.isPresent()) && (resul.get() == ButtonType.OK)) {
-                            Producto pro = new Producto(Integer.parseInt(rowProducto.codigo.getText()), "x", "x", "x", 0, 0, 0, 0, 0, 0, 0, 0, 0, "No Activo", 0, 0, "", "");
-                            DataProducto datos = new DataProducto();
-                            datos.crudProducto(pro, "delete");
+                        if (alertDialog.alertConfirm("Lote", "Esta seguro de emilinar este lote")) {
+                            DataLote dataLote = new DataLote();
+                            dataLote.crudLote(lote, "delete");
                             ProductoController productoController = new ProductoController();
                             productoController.initLista(getListView());
                             getListView().refresh();
                         }
                     }
-
                 else{
-
-                    alerta.setContentText("¿Esta seguro de Activar el producto?");
-                    Optional<ButtonType> resuls=alerta.showAndWait();
-                    if ((resuls.isPresent()) && (resuls.get()==ButtonType.OK)){
+                    if (alertDialog.alertConfirm("Producto", "Está seguro de desactivar este producto.")) {
+                        Producto pro = new Producto(Integer.parseInt(rowProducto.codigo.getText()), "x", "x", "x", 0, 0, 0, 0, 0, 0, 0, 0, 0, "No Activo", 0, 0, "", "");
+                        DataProducto datos = new DataProducto();
+                        datos.crudProducto(pro, "delete");
+                        ProductoController productoController = new ProductoController();
+                        productoController.initLista(getListView());
+                        getListView().refresh();
+                    }
+                }
+                }else {
+                        if (alertDialog.alertConfirm("Producto", "Desea  activar este producto.")){
                         Producto pro=new Producto(Integer.parseInt(rowProducto.codigo.getText()),"x","x","x",0,0,0,0,0,0,0,0,0,"Activo",0,0,"","");
                         DataProducto datos=new DataProducto();
                         datos.crudProducto(pro,"delete");
@@ -83,12 +74,7 @@ public class ProCell extends ListCell<Producto> {
                     }
                 }
 
-                }
 
-                /*
-                Producto pro=new Producto(Integer.parseInt(rowProducto.codigo.getText()),"x","x","x",0,0,0,0,0,0,0,0,0,"No Activo",0,0,"","");
-                DataProducto datos=new DataProducto();
-                datos.crudProducto(pro,"delete");*/
 
             }
 
@@ -131,6 +117,7 @@ public class ProCell extends ListCell<Producto> {
                     Parent parent = loader.load();
                     Stage stage = new Stage();
                     stage.setTitle("Modificar producto");
+                    stage.getIcons().add(new Image("/img/icon.png"));
                     stage.setScene(new Scene(parent));
                     FormProducto formProducto = loader.<FormProducto>getController();
                     formProducto.pasarRegistro(producto);
@@ -176,6 +163,7 @@ public class ProCell extends ListCell<Producto> {
                         Stage stage=new Stage();
                         stage.setTitle("Modificar producto");
                         stage.setScene(new Scene(parent));
+                        stage.getIcons().add(new Image("/img/icon.png"));
                         NuevoLoteController nuevoLoteController=loader.<NuevoLoteController>getController();
                         nuevoLoteController.pasarRegistro(lote);
                         stage.show();
