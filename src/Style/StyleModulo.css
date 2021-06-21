@@ -130,7 +130,7 @@
      -fx-border-color: #edebe9;
  -fx-border-width: 1.5px;
      -fx-font-size: 16px;
-
+    -fx-border-radius: 16px;
  }
  .text-field: focused{
      -fx-background-insets: 0;
