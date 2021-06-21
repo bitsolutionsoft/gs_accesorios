@@ -56,6 +56,7 @@ public class FormProducto implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         estado("Activo");
         labelTitulo.setText("Ingresar Producto");
+        txtIdlote.setEditable(false);
         iniciar_combo_pro_col(0,0);
     }
 

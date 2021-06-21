@@ -1,5 +1,6 @@
 package Cliente.DAO;
 
+import ClassAux.Util;
 import Conexion.Conexion;
 import Producto.DAO.Producto;
 
@@ -8,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Data {
+public class DataCliente {
 
 
     public ArrayList<Cliente> viewCliente(String accion){
@@ -19,15 +20,14 @@ public class Data {
             Conexion conexion =new Conexion();
 
             conexion.Conexion();
-            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_cliente(?, ?, ?, ?, ?, ?, ?, ?)}");
+            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_cliente(?, ?, ?, ?, ?, ?, ?)}");
             callableStatement.setInt(1,0);
             callableStatement.setString(2,"");
             callableStatement.setString(3,"");
             callableStatement.setInt(4,0);
             callableStatement.setInt(5,0);
-            callableStatement.setInt(6,0);
-            callableStatement.setString(7,"");
-            callableStatement.setString(8,accion);
+            callableStatement.setString(6,"");
+            callableStatement.setString(7,accion);
 
             ResultSet resultSet = callableStatement.executeQuery();
             while (resultSet.next()){
@@ -37,7 +37,6 @@ public class Data {
                 cliente.setApellido(resultSet.getString("apellido"));
                 cliente.setTelefonoUno(resultSet.getInt("TelefonoUno"));
                 cliente.setTelefonoDos(resultSet.getInt("TelefonoDos"));
-                cliente.setIdtipo(resultSet.getInt("idtipo"));
                 cliente.setSexo(resultSet.getString("sexo"));
                 lista.add(cliente);
             }
@@ -58,14 +57,15 @@ public class Data {
             Conexion conexion =new Conexion();
 
             conexion.Conexion();
-            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_cliente(?, ?, ?, ?, ?, ?, ?, ?)}");
+            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_cliente(?, ?, ?, ?, ?, ?, ?)}");
             callableStatement.setInt(1,cliente.codigo);
             callableStatement.setString(2,cliente.nombre);
             callableStatement.setString(3,cliente.apellido);
             callableStatement.setInt(4,cliente.telefonoUno);
             callableStatement.setInt(5,cliente.telefonoDos);
-            callableStatement.setInt(6,cliente.idtipo);
-            callableStatement.setString(7,cliente.sexo);
+            callableStatement.setString(6,cliente.sexo);
+            callableStatement.setString(7,accion);
+
             callableStatement.execute();
             System.out.println("Registrado con exito");
 
@@ -73,7 +73,10 @@ public class Data {
             conexion.con.close();
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+           // throwables.printStackTrace();
+            if(accion.equals("delete")) {
+                Util.Error("Cliente", "No se puede eliminar por que esta relacionado aotro registro:" + throwables);
+            }
         }
 
 

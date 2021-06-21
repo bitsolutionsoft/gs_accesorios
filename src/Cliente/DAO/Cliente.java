@@ -1,19 +1,19 @@
 package Cliente.DAO;
 
 public class Cliente {
-    int codigo, telefonoUno, telefonoDos, idtipo;
+    int codigo, telefonoUno, telefonoDos;
     String nombre, apellido, sexo;
 
     public Cliente(){}
 
-    public Cliente (int codigo, String nombre, String apellido, int telefonoUno, int telefonoDos, int idtipo, String sexo){
+    public Cliente (int codigo, String nombre, String apellido, int telefonoUno, int telefonoDos, String sexo){
 
         this.codigo=codigo;
         this.nombre=nombre;
         this.apellido=apellido;
         this.telefonoUno=telefonoUno;
         this.telefonoDos=telefonoDos;
-        this.idtipo=idtipo;
+
         this.sexo=sexo;
 
     }
@@ -42,13 +42,7 @@ public class Cliente {
         this.telefonoDos = telefonoDos;
     }
 
-    public int getIdtipo() {
-        return idtipo;
-    }
 
-    public void setIdtipo(int idtipo) {
-        this.idtipo = idtipo;
-    }
 
     public String getNombre() {
         return nombre;
