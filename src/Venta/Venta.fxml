@@ -36,14 +36,14 @@
                               <Label text="Fecha" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label text="Cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Label text="nit" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <Label text="Label" GridPane.columnIndex="2" />
-                              <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Label fx:id="lblNoOrden" text="Label" GridPane.columnIndex="2" />
+                              <TextField fx:id="txtFecha" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                               <TextField GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                              <ComboBox prefHeight="25.0" prefWidth="156.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                              <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <ComboBox fx:id="cbxCliente" prefHeight="25.0" prefWidth="156.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button fx:id="btnNuevoCliente" mnemonicParsing="false" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
-                        <TableView prefHeight="356.0" prefWidth="369.0">
+                        <TableView fx:id="tblProductoSeleccionado" prefHeight="356.0" prefWidth="369.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="C1" />
                             <TableColumn prefWidth="75.0" text="C2" />
@@ -54,8 +54,8 @@
                   <VBox alignment="CENTER" prefHeight="641.0" prefWidth="443.0" spacing="5.0">
                      <children>
                         <Label text="Productos Diposnibles" />
-                        <TextField prefHeight="34.0" prefWidth="378.0" />
-                        <TableView prefHeight="376.0" prefWidth="378.0">
+                        <TextField fx:id="txtBuscar" prefHeight="34.0" prefWidth="378.0" />
+                        <TableView fx:id="tblProductoDisponible" prefHeight="376.0" prefWidth="378.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="C1" />
                             <TableColumn prefWidth="75.0" text="C2" />

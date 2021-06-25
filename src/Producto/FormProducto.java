@@ -58,6 +58,18 @@ public class FormProducto implements Initializable {
         labelTitulo.setText("Ingresar Producto");
         txtIdlote.setEditable(false);
         iniciar_combo_pro_col(0,0);
+/*
+        txtPrecioMayorista.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if(!txtPrecioCompra.getText().isEmpty() && !txtPrecioMayorista.getText().isEmpty()
+                ){
+                    if (Float.parseFloat( txtPrecioCompra.getText()) > Float.parseFloat(txtPrecioMayorista.getText())){
+                        Util.Error("precio", "El precio ingresado debe ser mayor que el precio de compra");
+                    }
+                }
+            }
+        });*/
     }
 
     public void pasarRegistro(Producto producto){
