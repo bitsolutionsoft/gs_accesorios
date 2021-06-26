@@ -60,7 +60,7 @@ public class DataProveedor {
             Conexion conexion =new Conexion();
 
             conexion.Conexion();
-            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_proveedor(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);}");
+            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_proveedor(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
             callableStatement.setInt(1,proveedor.getIdProveedor());
             callableStatement.setString(2,proveedor.getNombre());
             callableStatement.setString(3,proveedor.getApellido());

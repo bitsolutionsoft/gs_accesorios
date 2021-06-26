@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -103,6 +104,12 @@ public class ProveedorController implements Initializable  {
             Stage stage=new Stage();
             stage.setScene(new Scene(parent));
             stage.show();
+            stage.getIcons().add(new Image("/img/icon.png"));
+            stage.setOnHiding((event ->{
+                initLista(listProveedor);
+                // llenarListaProducto();
+                listProveedor.refresh();
+            }));
 
 
         }catch (IOException e){

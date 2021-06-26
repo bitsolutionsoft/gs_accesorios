@@ -36,7 +36,8 @@ public class ProCell extends ListCell<Producto> {
             e.printStackTrace();
         }
         rowProducto=loader.getController();
-        //el evento del botono eliminar para eliminar productos
+
+        //el evento del boton eliminar para eliminar productos ____________________________________________________///
         rowProducto.btnEliminar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -79,6 +80,9 @@ public class ProCell extends ListCell<Producto> {
             }
 
         });
+        //final del evento de eliminar
+
+        //evento del boton modificar _______________________________________________________________________________________//
         
         rowProducto.btnEditar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -135,6 +139,7 @@ public class ProCell extends ListCell<Producto> {
             }
             }
         });
+        //final del evento modificar
 
 
         rowProducto.btnAgregar.setOnAction(new EventHandler<ActionEvent>() {
