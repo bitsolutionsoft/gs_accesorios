@@ -131,6 +131,8 @@ definirSexo();
         Proveedor proveedor = new Proveedor();
         if (txtCodigo.getText().isEmpty()) {
             proveedor.setIdProveedor(0);
+            proveedor.setSexo(sexo);
+            proveedor.setEstado(estado);
         } else {
             proveedor.setIdProveedor(Integer.parseInt(txtCodigo.getText()));
             proveedor.setSexo(sexo);
