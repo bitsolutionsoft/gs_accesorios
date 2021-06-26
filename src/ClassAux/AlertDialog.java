@@ -1,13 +1,11 @@
 package ClassAux;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DialogPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class AlertDialog {
@@ -30,5 +28,26 @@ public class AlertDialog {
         return false;
         }
     }
+public Float SelectPrecion(ArrayList<Float> list){
 
+
+    ChoiceDialog<Float> dialog=new ChoiceDialog<Float>(list.get(0),list.get(1),list.get(2));
+    dialog.setTitle("Precios");
+    dialog.setHeaderText("Selecione del producto: ");
+    dialog.setContentText("Precios del producto: ");
+    dialog.setGraphic(new ImageView("/img/exclamation.png"));
+    DialogPane dp = dialog.getDialogPane();
+    dp.getStylesheets().add(getClass().getResource("/Style/styleAlert.css").toExternalForm());
+    Stage stage=(Stage)dialog.getDialogPane().getScene().getWindow();
+    stage.getIcons().add(new Image("/img/icon.png"));
+    Optional<Float> result =dialog.showAndWait();
+    if (result.isPresent()){
+        return Float.parseFloat(result.get().toString());
+    }else {
+     return null;
+    }
+
+
+
+}
 }
