@@ -1,7 +1,4 @@
- .dialog-pane{
-  /*-fx-border-color:black;
-  -fx-border-width:2.0px;*/
- }
+
 
 /**Costumization of The Bar where the buttons are located**/
 .dialog-pane > .button-bar > .container {
@@ -50,6 +47,32 @@
     -fx-background-color:#ceb6e2;
     -fx-background-radius:8;
     -fx-text-fill:#white;
-    -fx-font-weight:bold;
+    -fx-font-weight:bold;}
 */
+
+.choice-dialog .dialog-pane > .content.label {
+   -fx-padding: 0.5em 0.5em 0.5em 0.5em;
+   -fx-background-color: white;
+   -fx-text-fill:#444444;
+   -fx-font-size:13.0px;
+}
+  .combo-box {
+   -fx-background-color: white;
+   -fx-font-weight: bold;
+    }
+   /* styles text of cover choice*/
+   .combo-box > .list-cell {
+   -fx-text-fill: #666666;
+   }
+
+  .combo-box-popup > .list-view {
+ -fx-background-color:white;
+ -fx-background-insets: 0, 1;
+ -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 12, 0.0 , 0 , 8 );
+  }
+
+ .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet >  .list-cell {
+ -fx-padding: 4 0 4 5;
+ -fx-background: white;
  }
+

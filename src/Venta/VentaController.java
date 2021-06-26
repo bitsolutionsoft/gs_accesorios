@@ -4,6 +4,7 @@ import ClassAux.AlertDialog;
 import ClassAux.SizeColumnTable;
 import Cliente.DAO.Cliente;
 import Cliente.DAO.DataCliente;
+import Producto.DAO.DataLote;
 import Producto.DAO.Lote;
 import Venta.DAO.*;
 import javafx.application.Platform;
@@ -24,6 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -51,7 +53,7 @@ public class VentaController implements Initializable {
     public TableView <DetalleFactura> tblProductoSeleccionado;
     public TableColumn<DetalleFactura, String> cellCodigo;
     public TableColumn<DetalleFactura, String> cellDescripcion;
-    public TableColumn<DetalleFactura, String> cellCantidad;
+    public TableColumn<DetalleFactura, Integer> cellCantidad;
     public TableColumn<DetalleFactura, String> cellSubtotal;
 
     public TableColumn<DetalleFactura, Float> cellPrecio;
@@ -67,7 +69,9 @@ public class VentaController implements Initializable {
     ArrayList<DetalleFactura> proSelecionado = new ArrayList<>();
     ObservableList<DetalleFactura> proSeleccionados;
     ObservableList<Cliente> datoClient;
-    ObservableList<Lote> filalote= FXCollections.observableArrayList();
+    DataLote dataLote=new DataLote();
+    ObservableList<Lote> datosLote= FXCollections.observableArrayList(dataLote.viewLote("viewall"));
+    ObservableList <Float> listPrecios=FXCollections.observableArrayList();
 
     ArrayList<Lote> dat = new ArrayList<>();
     SizeColumnTable ajustarColumna=new SizeColumnTable();
@@ -141,25 +145,44 @@ public class VentaController implements Initializable {
         });
 
 
+tblProductoSeleccionado.setOnMousePressed(new EventHandler<MouseEvent>() {
+    @Override
+    public void handle(MouseEvent event) {
+        if (event.isSecondaryButtonDown() && event.getClickCount()==2){
+            DetalleFactura detalleFactura=tblProductoSeleccionado.getSelectionModel().getSelectedItem();
+            devolver(detalleFactura, detalleFactura.getCantidad(), true);
+        }
+    }
+});
 
-
-     /*modificar cantidad desde la celda cantidad enla tabla ventas
-        cellCantidad.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<DetalleFactura, String>>() {
+     //modificar cantidad desde la celda cantidad enla tabla ventas
+        cellCantidad.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<DetalleFactura, Integer>>() {
             @Override
-            public void handle(TableColumn.CellEditEvent<DetalleFactura, String> event) {
+            public void handle(TableColumn.CellEditEvent<DetalleFactura, Integer> event) {
                 DetalleFactura detalle=tblProductoSeleccionado.getSelectionModel().getSelectedItem();
                 int NoArtAnterior = detalle.getCantidad();
-                int nuevo = Integer.parseInt(event.getNewValue());
-                if (NoArtAnterior < nuevo){
-                    DescontarProducto(new ProductoDisponible(detalle.getIdproducto(),detalle.getCantidad(),detalle.getIdlote(),detalle.getDescripcion(),"","","",detalle.getPrecio()),nuevo);
-                }else{
-                    devolver(detalle,nuevo);
-                }
+                int nuevo = event.getNewValue();
+                devolver(detalle,NoArtAnterior,false);
+                DescontarProducto(new ProductoDisponible(detalle.getIdproducto(),detalle.getCantidad(),detalle.getIdlote(),detalle.getDescripcion(),"","","",detalle.getPrecio()),nuevo);
+
             }
         });
+cellPrecio.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<DetalleFactura, Float>>() {
+    @Override
+    public void handle(TableColumn.CellEditEvent<DetalleFactura, Float> event) {
+        DetalleFactura detalle=tblProductoSeleccionado.getSelectionModel().getSelectedItem();
+        Float nuevo=event.getNewValue();
+        for (int i=0; i<proSelecionado.size(); i++){
+            if (proSelecionado.get(i).getIdlote()==detalle.getIdlote() && proSelecionado.get(i).getIdproducto()==detalle.getIdproducto()){
+                proSelecionado.get(i).setPrecio(nuevo);
+                refresacarLista();
+            }
+        }
+    }
+});
 
 
-       */
+
 
 
 
@@ -167,23 +190,31 @@ public class VentaController implements Initializable {
 
     }
 
-public void devolver(DetalleFactura detalleFactura, int cantidad){
+public void devolver(DetalleFactura detalleFactura, int cantidad,boolean eliminar){
     for (int i = 0; i < listaProducto.size(); i++) {
         if (detalleFactura.getIdproducto()== listaProducto.get(i).getIdproducto() && detalleFactura.getIdlote()== listaProducto.get(i).getIdlote()) {
             int cant = listaProducto.get(i).getStock();
             listaProducto.get(i).setStock(cant + cantidad);
             tblProductoDisponible.refresh();
+
         }
     }
-    for (int i = 0; i < proSelecionado.size(); i++) {
-        if (detalleFactura.getIdproducto() == proSelecionado.get(i).getIdproducto() && detalleFactura.getIdlote() == proSelecionado.get(i).getIdlote()) {
-            proSelecionado.get(i).setCantidad(proSelecionado.get(i).getCantidad()-cantidad);
-            if (proSelecionado.get(i).getCantidad()<=0){
-            proSelecionado.remove(i);
+    for (int i=0;i<proSelecionado.size();i++){
+        if (detalleFactura.getIdproducto()== proSelecionado.get(i).getIdproducto() && detalleFactura.getIdlote()== proSelecionado.get(i).getIdlote()) {
+            proSelecionado.get(i).setCantidad(0);
+            tblProductoDisponible.refresh();
+        }
+    }
+    if (eliminar) {
+
+        for (int i = 0; i < proSelecionado.size(); i++) {
+            if (detalleFactura.getIdproducto() == proSelecionado.get(i).getIdproducto() && detalleFactura.getIdlote() == proSelecionado.get(i).getIdlote()) {
+                    proSelecionado.remove(i);
+                refresacarLista();
             }
         }
     }
-    refresacarLista();
+
 }
 public  boolean validarSeleccin(int lote, int id){
    boolean result =false;
@@ -316,7 +347,7 @@ public  void iniciarColumnatTabla(){
 
     cellCodigo.setCellValueFactory(new PropertyValueFactory<DetalleFactura, String>("idproducto"));
     cellDescripcion.setCellValueFactory(new PropertyValueFactory<DetalleFactura, String>("descripcion"));
-    cellCantidad.setCellValueFactory(new PropertyValueFactory<DetalleFactura, String>("cantidad"));
+    cellCantidad.setCellValueFactory(new PropertyValueFactory<DetalleFactura, Integer>("cantidad"));
     cellPrecio.setCellValueFactory(new PropertyValueFactory<DetalleFactura, Float>("precio"));
     cellSubtotal.setCellValueFactory(new PropertyValueFactory<DetalleFactura, String>("subtotal"));
     tblProductoSeleccionado.setColumnResizePolicy(param -> true);
@@ -324,6 +355,66 @@ public  void iniciarColumnatTabla(){
     Platform.runLater(()-> ajustarColumna.ajustarColumna(tblProductoSeleccionado));
     tblProductoSeleccionado.setEditable(true);
     tblProductoSeleccionado.getSelectionModel().setCellSelectionEnabled(false);
+
+ //cell factory cantidad y precio
+   cellCantidad.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Integer>() {
+       @Override
+       public String toString(Integer integer) {
+           return integer.toString();
+       }
+
+       @Override
+       public Integer fromString(String s) {
+           return Integer.parseInt(s);
+       }
+   }));
+
+
+   cellPrecio.setCellFactory(TextFieldTableCell.forTableColumn( new StringConverter<Float>() {
+       @Override
+       public String toString(Float aFloat) {
+           return aFloat.toString();
+       }
+
+       @Override
+       public Float fromString(String s) {
+           return Float.parseFloat(s);
+       }
+   }));
+
+   ContextMenu contextMenu=new ContextMenu();
+MenuItem itemPrecio=new MenuItem("Seleccionar precio");
+    MenuItem itemEliminar=new MenuItem("Eliminar de la venta");
+    itemEliminar.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent actionEvent) {
+            DetalleFactura detalleFactura=tblProductoSeleccionado.getSelectionModel().getSelectedItem();
+            devolver(detalleFactura,detalleFactura.getCantidad(),true);
+        }
+    });
+
+    itemPrecio.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent actionEvent) {
+            DetalleFactura detalle=tblProductoSeleccionado.getSelectionModel().getSelectedItem();
+            ArrayList<Float> lis=new ArrayList<>(retornarPrecio(detalle));
+
+            Float nuevo= alertDialog.SelectPrecion(lis);
+
+            if (nuevo!=null) {
+                for (int i = 0; i < proSelecionado.size(); i++) {
+                    if (proSelecionado.get(i).getIdlote() == detalle.getIdlote() && proSelecionado.get(i).getIdproducto() == detalle.getIdproducto()) {
+                        proSelecionado.get(i).setPrecio(nuevo);
+                        refresacarLista();
+                    }
+                }
+            }
+
+        }
+    });
+    contextMenu.getItems().add(itemPrecio);
+    contextMenu.getItems().add(itemEliminar);
+    tblProductoSeleccionado.setContextMenu(contextMenu);
 
 
 
@@ -371,6 +462,19 @@ DataProDisponible dataProDisponible=new DataProDisponible();
 lblNoOrden.setText(String.valueOf(dataProDisponible.orden()));
     }
 
+    public ArrayList<Float>   retornarPrecio(DetalleFactura detalleFactura){
+        ArrayList<Float> precio=new ArrayList();
+        for (int i=0;i<datosLote.size();i++){
+            if (detalleFactura.getIdproducto()==datosLote.get(i).getIdproducto() && detalleFactura.getIdlote()==datosLote.get(i).getIdlote()){
+
+                precio.add(datosLote.get(i).getPrecio_unidad());
+                precio.add(datosLote.get(i).getPrecio_mayor());
+                precio.add(datosLote.get(i).getPrecio_mayorista());
+                return  precio;
+            }
+        }
+        return precio;
+    }
 
     public void ingresarNuevocliente(ActionEvent actionEvent) {
         try {
