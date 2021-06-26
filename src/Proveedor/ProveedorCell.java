@@ -55,10 +55,7 @@ public class ProveedorCell extends ListCell<Proveedor> {
         rowProveedor.btnEditar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (rowProveedor.estado.getText().equals("No Activo")) {
-                    Util.Error("Producto", "Por favor Active  el producto para poder modificar");
 
-                } else {
                     Proveedor proveedor = new Proveedor();
                     for (int i = 0; i < getListView().getItems().size(); i++) {
                         if (Integer.parseInt(rowProveedor.codigo.getText()) == getListView().getItems().get(i).getIdProveedor()) {
@@ -96,7 +93,7 @@ public class ProveedorCell extends ListCell<Proveedor> {
 
                     }
                 }
-            }
+
         });
         //final del evento modificar
 
