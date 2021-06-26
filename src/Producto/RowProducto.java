@@ -102,6 +102,7 @@ public class RowProducto implements Initializable {
         estado.setPadding(new Insets(5));
         if (texto.equals("Activo")){
             estado.setStyle(estadoActivo);
+
             initButtonDelete("Activo");
 
         }else{

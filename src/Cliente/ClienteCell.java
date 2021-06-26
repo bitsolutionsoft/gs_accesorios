@@ -31,7 +31,7 @@ public class ClienteCell extends ListCell<Cliente> {
            @Override
            public void handle(ActionEvent actionEvent) {
                if (alertDialog.alertConfirm("Cliente", "esta seguro de elliminar el cliente")){
-                   Cliente pro=new Cliente(Integer.parseInt(rowCliente.codigo.getText()),"x","x",0,0,"x");
+                   Cliente pro=new Cliente(Integer.parseInt(rowCliente.codigo.getText()),"x","x",0,0,"x","x");
                    DataCliente datos=new DataCliente();
                    datos.crudCliente(pro,"delete");
                    ClienteController clienteController=new ClienteController();

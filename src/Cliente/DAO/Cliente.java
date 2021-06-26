@@ -2,11 +2,11 @@ package Cliente.DAO;
 
 public class Cliente {
     int codigo, telefonoUno, telefonoDos;
-    String nombre, apellido, sexo;
+    String nombre, apellido, sexo, nit;
 
     public Cliente(){}
 
-    public Cliente (int codigo, String nombre, String apellido, int telefonoUno, int telefonoDos, String sexo){
+    public Cliente (int codigo, String nombre, String apellido, int telefonoUno, int telefonoDos, String sexo,String nit){
 
         this.codigo=codigo;
         this.nombre=nombre;
@@ -15,6 +15,7 @@ public class Cliente {
         this.telefonoDos=telefonoDos;
 
         this.sexo=sexo;
+        this.nit=nit;
 
     }
 
@@ -66,5 +67,23 @@ public class Cliente {
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
+    }
+
+    public String getNit() {
+        return nit;
+    }
+
+    public void setNit(String nit) {
+        this.nit = nit;
+    }
+
+    @Override
+    public String toString() {
+        return
+                 codigo +
+                " " + nombre +
+                " " + apellido+
+                         " " + nit
+                ;
     }
 }

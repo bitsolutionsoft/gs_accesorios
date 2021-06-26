@@ -1,7 +1,6 @@
-/*@import "paletaColor.css";*/
 
 #fondo{
--fx-background-color:#ffffff;
+-fx-background-color:white;
 }
 /*seccion del menu*/
 #PanelMenu{
@@ -141,3 +140,106 @@
  -fx-border-width: 1.5px;
 -fx-font-size: 16px;
  }
+
+#accionBotones{
+-fx-background-color:#edebe9;
+-fx-background-radius:100px;
+-fx-margin:5px 0px 10px 0px;
+}
+#estadoNoActivo{
+-fx-background-color:#54dea7;
+-fx-text-fill:#ffffff;
+-fx-font-weight: bold;
+-fx-background-radius:10px;
+-fx-margin:5px 0px 10px 0px;
+}
+
+#estadoActivo{
+-fx-background-color:#54dea7;
+-fx-text-fill:#ffffff;
+-fx-font-weight: bold;
+-fx-background-radius:10px;
+-fx-margin:5px 0px 10px 0px;
+}
+#btnPrimario{
+-fx-background-color:#325FD4;
+-fx-background-radius: 10px;
+-fx-text-fill:white;
+-fx-font-size: 14px;
+-fx-font-weight:bold;
+}
+#btnSecundario{
+-fx-background-color:white;
+-fx-border-color:#325FD4;
+-fx-border-radius: 10px;
+-fx-text-fill:#325FD4;
+-fx-font-size: 14px;
+-fx-font-weight:bold;
+}
+
+/*tablas*/
+.table-view {
+    -fx-background-color: transparent;
+}
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+}
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(to bottom, #1dbbdd44, #93f9b944);
+    -fx-background-radius: 7px 7px 0px 0px;
+    -fx-background-insets: 0 11px 0 0;
+    -fx-padding: 0 0 5px 0;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color:  linear-gradient(to bottom, #1dbbdd44, #93f9b944);
+}
+
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color:  linear-gradient(to right, #1dbbdd44, #93f9b944);
+}
+
+
+
+.table-row-cell: selected {
+    -fx-background-color: #00ffcc;
+      -fx-text-background-color: blue;
+    -fx-background-radius: 15px;
+}
+.table-row-cell: hover {
+    -fx-background-color: #93f9b911;
+    -fx-text-background-color: red;
+}
+.table-row-cell: odd{
+    -fx-background-color: #93f9b911;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell: even{
+    -fx-background-color: #1dbbdd11;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}

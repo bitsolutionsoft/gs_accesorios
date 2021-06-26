@@ -1,13 +1,13 @@
 package Venta.DAO;
 
-public class Venta {
+public class Factura {
     int idfactura, idcliente;
     String estado, motivo_anulacion,fecha;
     float total;
 
-    public  Venta(){}
+    public Factura(){}
 
-    public Venta(int idfactura, int idcliente, String fecha, String estado, String motivo_anulacion, float total){
+    public Factura(int idfactura, int idcliente, String fecha, String estado, String motivo_anulacion, float total){
         this.idfactura=idfactura;
         this.idcliente=idcliente;
         this.fecha=fecha;

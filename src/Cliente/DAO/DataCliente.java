@@ -20,14 +20,15 @@ public class DataCliente {
             Conexion conexion =new Conexion();
 
             conexion.Conexion();
-            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_cliente(?, ?, ?, ?, ?, ?, ?)}");
+            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_cliente(?, ?, ?, ?, ?, ?, ?,?)}");
             callableStatement.setInt(1,0);
             callableStatement.setString(2,"");
             callableStatement.setString(3,"");
             callableStatement.setInt(4,0);
             callableStatement.setInt(5,0);
             callableStatement.setString(6,"");
-            callableStatement.setString(7,accion);
+            callableStatement.setString(7,"");
+            callableStatement.setString(8,accion);
 
             ResultSet resultSet = callableStatement.executeQuery();
             while (resultSet.next()){
@@ -37,6 +38,7 @@ public class DataCliente {
                 cliente.setApellido(resultSet.getString("apellido"));
                 cliente.setTelefonoUno(resultSet.getInt("TelefonoUno"));
                 cliente.setTelefonoDos(resultSet.getInt("TelefonoDos"));
+                cliente.setNit(resultSet.getString("nit"));
                 cliente.setSexo(resultSet.getString("sexo"));
                 lista.add(cliente);
             }
@@ -57,12 +59,13 @@ public class DataCliente {
             Conexion conexion =new Conexion();
 
             conexion.Conexion();
-            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_cliente(?, ?, ?, ?, ?, ?, ?)}");
+            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_cliente(?, ?, ?, ?, ?, ?, ?,?)}");
             callableStatement.setInt(1,cliente.codigo);
             callableStatement.setString(2,cliente.nombre);
             callableStatement.setString(3,cliente.apellido);
             callableStatement.setInt(4,cliente.telefonoUno);
             callableStatement.setInt(5,cliente.telefonoDos);
+            callableStatement.setString(6,cliente.nit);
             callableStatement.setString(6,cliente.sexo);
             callableStatement.setString(7,accion);
 

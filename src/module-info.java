@@ -21,6 +21,7 @@ module gs.accesorios {
     opens Colocacion;
     opens  Colocacion.DAO;
     opens Venta;
+    opens Venta.DAO;
     opens Proveedor;
     opens Proveedor.DAO;
     opens ClassAux;
