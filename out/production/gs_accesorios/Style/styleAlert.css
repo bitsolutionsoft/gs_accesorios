@@ -12,6 +12,7 @@
    -fx-font-size:13.0px;
 }
 
+
 /**Costumization of DialogPane Header**/
 .dialog-pane:header .header-panel {
   -fx-background-color: white;
@@ -50,7 +51,19 @@
     -fx-font-weight:bold;}
 */
 
-.choice-dialog .dialog-pane > .content.label {
+ .dialog-pane > .content .combo-box {
+   -fx-padding: 0.5em 0.5em 0.5em 0.5em;
+   -fx-background-color: white;
+   -fx-text-fill:#444444;
+   -fx-font-size:13.0px;
+}
+ .dialog-pane > .content .label {
+   -fx-padding: 0.5em 0.5em 0.5em 0.5em;
+   -fx-background-color: white;
+   -fx-text-fill:#444444;
+   -fx-font-size:13.0px;
+}
+ .dialog-pane > .content  {
    -fx-padding: 0.5em 0.5em 0.5em 0.5em;
    -fx-background-color: white;
    -fx-text-fill:#444444;

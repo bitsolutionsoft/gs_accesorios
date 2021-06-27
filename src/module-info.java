@@ -4,9 +4,19 @@ module gs.accesorios {
     requires javafx.fxml;
     requires javafx.graphics;
 
+
     requires mysql.connector.java;
     requires java.sql;
     requires TrayNotification;
+    requires java.desktop;
+    requires jasperreports;
+    requires commons.beanutils;
+    requires commons.digester;
+    requires commons.javaflow;
+    requires commons.logging;
+    requires commons.collections;
+
+    requires jasperreports.fonts;
 
 
     opens Menu;
@@ -18,6 +28,7 @@ module gs.accesorios {
     opens Libreria;
     opens Conexion;
     opens Informe;
+    opens Informe.DAO;
     opens Colocacion;
     opens  Colocacion.DAO;
     opens Venta;

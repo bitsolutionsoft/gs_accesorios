@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -132,7 +133,7 @@ public static ImageView icono(String url){
         anterior="Colocacion";
     }
     public void AbrirInforme(ActionEvent actionEvent) {
-        VBox panelCenter=(VBox) vista("/Informe/Informe.fxml");
+        ScrollPane panelCenter=(ScrollPane) vista("/Informe/Informe.fxml");
         panelCenter.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         panelCenter.setPadding(new Insets(10));
         Menu.setCenter(panelCenter);

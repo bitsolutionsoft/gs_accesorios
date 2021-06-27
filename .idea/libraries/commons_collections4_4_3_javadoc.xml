@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="commons-collections4-4.3-javadoc">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/Libreria/commons-collections4-4.3-tests.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/Libreria/commons-collections4-4.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/Libreria/commons-digester-2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/Libreria/commons-javaflow.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/Libreria/commons-logging-1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/src/Libreria/commons-collections4-4.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/Libreria/commons-collections4-4.3-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/Libreria/commons-collections4-4.3-test-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

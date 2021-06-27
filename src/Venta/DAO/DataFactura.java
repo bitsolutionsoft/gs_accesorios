@@ -3,6 +3,8 @@ package Venta.DAO;
 import ClassAux.Util;
 
 import Conexion.Conexion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
@@ -78,5 +80,6 @@ public class DataFactura {
 
 
     }
+
 
 }

@@ -1,6 +1,7 @@
 package Venta;
 
 import ClassAux.AlertDialog;
+import ClassAux.ImprimirVale;
 import ClassAux.SizeColumnTable;
 import Cliente.DAO.Cliente;
 import Cliente.DAO.DataCliente;
@@ -502,6 +503,9 @@ lblNoOrden.setText(String.valueOf(dataProDisponible.orden()));
                 DetalleFactura datosDetalle=new DetalleFactura(0,Integer.parseInt(lblNoOrden.getText()),proSelecionado.get(i).getIdproducto(),proSelecionado.get(i).getDescripcion(),proSelecionado.get(i).getCantidad(),proSelecionado.get(i).getIdlote(),proSelecionado.get(i).getPrecio(),proSelecionado.get(i).getSubtotal());
                 detalleFactura.crudDetalleFactura(datosDetalle, "new");
             }
+            ImprimirVale imprimir=new ImprimirVale();
+            Modelo_factura modelo=new Modelo_factura();
+            imprimir.LlenarFactura(modelo.datosFactura(proSeleccionados),lblNoOrden.getText(),false,false,txtFecha.getText(),cbxCliente.getSelectionModel().getSelectedItem().getNombre()+" "+cbxCliente.getSelectionModel().getSelectedItem().getApellido(),"Ciudad",Float.parseFloat(lblTotal.getText()),cbxCliente.getSelectionModel().getSelectedItem().getNit());
         }
         btnLimpiar.setVisible(true);
     }

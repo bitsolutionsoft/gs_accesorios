@@ -25,5 +25,10 @@
     </orderEntry>
     <orderEntry type="library" name="mysql-connector-java-8.0.25" level="project" />
     <orderEntry type="library" name="TrayNotification" level="project" />
+    <orderEntry type="library" name="jasperreports-6.3.0" level="project" />
+    <orderEntry type="library" name="jasperreports-fonts-6.3.0" level="project" />
+    <orderEntry type="library" name="commons-beanutils-1.9.0" level="project" />
+    <orderEntry type="library" name="commons-collections-3.2.1" level="project" />
+    <orderEntry type="library" name="commons-collections4-4.3-javadoc" level="project" />
   </component>
 </module>
