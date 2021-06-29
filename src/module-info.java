@@ -29,6 +29,7 @@ module gs.accesorios {
     opens Conexion;
     opens Informe;
     opens Informe.DAO;
+    opens Informe.form;
     opens Colocacion;
     opens  Colocacion.DAO;
     opens Venta;

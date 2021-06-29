@@ -57,7 +57,8 @@ public class FormProducto implements Initializable {
         estado("Activo");
         labelTitulo.setText("Ingresar Producto");
         txtIdlote.setEditable(false);
-        iniciar_combo_pro_col(0,0);
+        iniciar_combo_col(0);
+        iniciar_combo_pro(0);
 /*
         txtPrecioMayorista.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
@@ -89,7 +90,9 @@ public class FormProducto implements Initializable {
             txtPrecioMayor.setText(String.valueOf(producto.getPrecio_mayor()));
             txtPrecioUnidad.setText(String.valueOf(producto.getPrecio_unidad()));
             txtIdlote.setText(String.valueOf(producto.getIdlote()));
-            iniciar_combo_pro_col(producto.getIdproveedor(),producto.getIdcolocacion());
+            iniciar_combo_col(producto.getIdcolocacion());
+            iniciar_combo_pro(producto.getIdproveedor());
+
 
             estado(producto.getEstado());
             btnIngresarProducto.setText("Actualizar Producto");
@@ -146,7 +149,7 @@ public class FormProducto implements Initializable {
             stage.setScene(new Scene(parent));
             stage.show();
             stage.setOnHiding((event ->{
-                iniciar_combo_pro_col(0,0);
+                iniciar_combo_col(0);
                 cbColocacion.getSelectionModel().selectFirst();
             }));
 
@@ -163,7 +166,7 @@ public class FormProducto implements Initializable {
             stage.setScene(new Scene(parent));
             stage.show();
             stage.setOnHiding((event ->{
-                iniciar_combo_pro_col(0,0);
+                iniciar_combo_pro(0);
                 cbProveedor.getSelectionModel().selectFirst();
 
             }));
@@ -188,22 +191,13 @@ public class FormProducto implements Initializable {
         }
     }
 
-    public  void iniciar_combo_pro_col(int proveedor, int colocacion){
+    public  void iniciar_combo_pro(int proveedor){
         DataProveedor dataProveedor=new DataProveedor();
         ArrayList<Proveedor> listProveedor= dataProveedor.viewProveedor("viewlast");
         ObservableList<Proveedor> obListProveedor= FXCollections.observableArrayList();
 
         obListProveedor.addAll(listProveedor);
         cbProveedor.setItems(obListProveedor);
-
-
-
-        DataColocacion dataColocacion=new DataColocacion();
-        ArrayList<Colocacion> listColocacion=dataColocacion.viewColocacion("viewlast");
-        ObservableList<Colocacion> obListColocacion=FXCollections.observableArrayList();
-
-        obListColocacion.addAll(listColocacion);
-        cbColocacion.setItems(obListColocacion);
 
         if (proveedor>0){
             for (int i=0; i<obListProveedor.size();i++){
@@ -215,6 +209,18 @@ public class FormProducto implements Initializable {
             }
 
         }
+
+    }
+
+
+
+    public  void iniciar_combo_col( int colocacion){
+        DataColocacion dataColocacion=new DataColocacion();
+        ArrayList<Colocacion> listColocacion=dataColocacion.viewColocacion("viewlast");
+        ObservableList<Colocacion> obListColocacion=FXCollections.observableArrayList();
+        obListColocacion.addAll(listColocacion);
+        cbColocacion.setItems(obListColocacion);
+
         if (colocacion >0){
             for (int i=0; i<obListColocacion.size();i++){
                 if (colocacion==obListColocacion.get(i).getIdColocacion()){
@@ -227,7 +233,7 @@ public class FormProducto implements Initializable {
 
     }
 
-public  Producto returnProducto(){
+    public  Producto returnProducto(){
         Producto producto=new Producto();
         if (txtCodigo.getText().isEmpty()){
             producto.setCodigo(0);

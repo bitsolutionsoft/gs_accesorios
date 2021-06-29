@@ -213,12 +213,18 @@ public class ProCell extends ListCell<Producto> {
         rowProducto.setpMayorista(producto.getPrecio_mayorista());
         rowProducto.setpMayor(producto.getPrecio_mayor());
         rowProducto.setpUnidad(producto.getPrecio_unidad());
-        rowProducto.setMaxima(producto.getMaximo());
-        rowProducto.setMinima(producto.getMinimo(),producto.getStock());
         rowProducto.setStock(producto.getStock());
+        rowProducto.setMaxima(producto.getMaximo());
+        rowProducto.setMinima(producto.getMinimo());
         rowProducto.setProveedor(producto.getProveedor());
         rowProducto.setCantidadlote(producto.getCantidad());
         rowProducto.setIdlote(producto.getIdlote());
+        if (producto.getMinimo()>producto.getStock()){
+            rowProducto.mostrarMinima("menor");
+        }
+        if (producto.getMinimo()==producto.getStock()){
+           rowProducto.mostrarMinima("igual");
+        }
 
         setGraphic(graphic);
     }

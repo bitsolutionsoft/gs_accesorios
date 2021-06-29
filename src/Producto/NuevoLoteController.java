@@ -75,6 +75,7 @@ public class NuevoLoteController implements Initializable {
 
     }
     public void  llenardatos(Lote lote){
+
         accion="add";
         txtidLote.setText(String.valueOf(lote.getIdlote()));
         txtidproducto.setText(String.valueOf(lote.getIdproducto()));
@@ -115,7 +116,7 @@ public class NuevoLoteController implements Initializable {
     public void pasarRegistro(Lote lote){
         if (lote !=null){
            datosLote=lote;
-           if (datosLote.getIdlote()>0){
+           if (datosLote.getIdlote()>0 && datosLote.getEstado().equals("Activo")){
             AccionLote("add");
            llenardatos(datosLote);
 

@@ -82,24 +82,18 @@ public class RowProducto implements Initializable {
     public void setColocacion(String texto) {
         colocacion.setText(texto);
     }
-
-    public void setMinima(int texto,int stock) {
+    public void setStock(int texto) {
+        stock.setText(String.valueOf(texto));
+    }
+    public void setMinima(int texto) {
         minima.setText(String.valueOf(texto));
-        if (texto>stock){
-            rootRow.setStyle(estiloMenor);
-        }
-        if (texto==stock){
-            rootRow.setStyle(estiloIgual);
-        }
     }
 
     public void setMaxima(int texto) {
         maxima.setText(String.valueOf(texto));
     }
 
-    public void setStock(int texto) {
-        stock.setText(String.valueOf(texto));
-    }
+
 
     public void setProveedor(String texto) {
         proveedor.setText(texto);
@@ -142,13 +136,22 @@ public class RowProducto implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
         initButton();
 
     }
 
 public void setAncho(Double ancho){rootRow.setPrefWidth(ancho);}
+    public void mostrarMinima(String condicion){
+        switch (condicion){
+            case "menor":
+                rootRow.setStyle(estiloMenor);
+                break;
+            case "igual":
+                rootRow.setStyle(estiloIgual);
+                break;
+        }
+
+    }
 
 
     //colocar icono, estilo y tamaño de los botones
