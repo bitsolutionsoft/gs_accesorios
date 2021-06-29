@@ -1,6 +1,7 @@
 package Producto;
 
 import ClassAux.Util;
+import ClassAux.formatos;
 import Colocacion.DAO.Colocacion;
 import Colocacion.DAO.DataColocacion;
 import Producto.DAO.DataLote;
@@ -51,6 +52,7 @@ public class FormProducto implements Initializable {
     public Label labelTitulo;
     private   String accion="new";
     private String estado="Activo";
+formatos formato=new formatos();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -59,6 +61,10 @@ public class FormProducto implements Initializable {
         txtIdlote.setEditable(false);
         iniciar_combo_col(0);
         iniciar_combo_pro(0);
+formato.entero(txtCantidad);
+formato.entero(txtMaxima);
+formato.entero(txtMaxima);
+//formato.decimal(txtPrecioCompra);
 /*
         txtPrecioMayorista.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
