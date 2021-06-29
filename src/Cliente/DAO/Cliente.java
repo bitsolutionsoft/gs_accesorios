@@ -83,6 +83,7 @@ public class Cliente {
                  codigo +
                 " " + nombre +
                 " " + apellido+
+
                          " " + nit
                 ;
     }

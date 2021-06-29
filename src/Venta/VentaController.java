@@ -520,6 +520,7 @@ lblNoOrden.setText(String.valueOf(dataProDisponible.orden()));
         tblProductoSeleccionado.getItems().clear();
         tblProductoSeleccionado.refresh();
         llenarTablaDisponible();
+        tblProductoDisponible.refresh();
         numeroOrder();
     }
 
