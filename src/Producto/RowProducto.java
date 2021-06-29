@@ -50,6 +50,13 @@ public class RowProducto implements Initializable {
             "-fx-margin:5px 0px 10px 0px;"
 
             ;
+    private final String estiloMenor="" +
+            "-fx-background-color:#f98689;"
+            ;
+
+    private final String estiloIgual="" +
+            "-fx-background-color:#f8fd67;"
+            ;
 
     //estilo de los estados
     private final String estadoActivo="" +
@@ -76,8 +83,14 @@ public class RowProducto implements Initializable {
         colocacion.setText(texto);
     }
 
-    public void setMinima(int texto) {
+    public void setMinima(int texto,int stock) {
         minima.setText(String.valueOf(texto));
+        if (texto>stock){
+            rootRow.setStyle(estiloMenor);
+        }
+        if (texto==stock){
+            rootRow.setStyle(estiloIgual);
+        }
     }
 
     public void setMaxima(int texto) {

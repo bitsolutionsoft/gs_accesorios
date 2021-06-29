@@ -177,7 +177,7 @@
 -fx-font-weight:bold;
 }
 
-/*tablas*/
+/*tablas
 .table-view {
     -fx-background-color: transparent;
 }
@@ -243,6 +243,81 @@
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
+*/
+.table-view {
+    -fx-background-color: transparent;
+}
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+
+
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: linear-gradient(to bottom,#3a7bd5,#473AD5 );
+    -fx-size:45;
+
+}
+
+.table-view .column-header .label{
+   -fx-text-fill: white;
+   -fx-font-weight: bold;
+}
+
+.table-view .cell{
+   -fx-cell-size: 35;
+  -fx-alignment: center-left;
+ /*  -fx-background-color: transparent;
+-fx-border-color: #1a237e;*/
+  -fx-text-fill:#191924;
+  -fx-alignment: CENTER_LEFT;
+
+}
+.table-row-cell:selected {
+   -fx-background-color: #ba70ff00;
+   -fx-text-background-color:  #ba70ff;
+    -fx-table-cell-border-color: transparent;
+}
+.table-row-cell: odd{
+    -fx-background-color:#defbfe44;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell: hover {
+    -fx-background-color:#ad68cb22;
+    -fx-text-background-color: white;
+    -fx-table-cell-border-color: transparent;
+}
+/* scroll bar starts here */
+
+/* The increment and decrement button CSS class of scrollbar */
+
+/* The main scrollbar **track** CSS class  */
+
+
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color:  linear-gradient(to bottom, #1dbbdd44, #93f9b944);
+}
+
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color:  linear-gradient(to right, #1dbbdd44, #93f9b944);
+}
+
 
 /**estilo de la graficas_______________________________________________________________*//
 .chart {
@@ -288,4 +363,105 @@
     -fx-fill: transparent;
     -fx-stroke: transparent;
     -fx-stroke-width: 0;
+}
+/*estilo de radio buttons*/
+.radio-button .radio{
+    /*-fx-background-insets: 0;
+    -fx-background-color: #1abc9c;*/
+      -fx-background-color: white;
+                -fx-border-color: #1E88E5;
+             -fx-border-width: 0.5px;
+             -fx-border-radius: 200px;
+
+}
+.radio-button: selected .radio{
+   /* -fx-background-insets: 0;*/
+    -fx-background-color: #325FD4;
+    -fx-foreground-color:white;
+}
+
+.radio-button .dot{
+
+    -fx-background-color: white;
+
+}
+
+/*estilo de los chech box*/
+
+.check-box .box{
+         -fx-background-color: white;
+            -fx-border-color: #54dea7;
+         -fx-border-width: 0.5px 0.5px 0.5px 0.5px;
+}
+.check-box:selected .box{
+         -fx-background-color:#54dea7;
+            -fx-border-color: #54dea7;
+         -fx-border-width: 0.5px 0.5px 0.5px 0.5px;
+         -fx-check-fill:white;
+}
+
+.check-box:selected .mark{
+         -fx-background-color: white;
+}
+/*date picker _____________________________________________*/
+.date-picker:editable > .arrow-button > * {
+    -fx-opacity: 0; /* poner el icono invisible */
+}
+.date-picker > .arrow-button {
+  -fx-background-image: url("/img/calendar.png");
+    -fx-background-size: 70% 60%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+   -fx-background-color:white;
+}
+.date-picker {
+   -fx-background-color:white;
+
+   -fx-border-color:  #3278fa;
+   -fx-border-radius: 4px;
+   -fx-border-width: 2px ;
+}
+
+.date-picker  .text-field {
+    -fx-background-color: white;
+    -fx-font-size:14px;
+    -fx-border-color:  #3278fa;
+    -fx-border-radius: 0 ;
+    -fx-border-width: 0 2 0 0;
+}
+
+.date-picker  .label {
+    -fx-background-color: white;
+}
+.date-picker >  .chooser {
+    -fx-background-color: white;
+  -fx-text-fill: blue;
+}
+.date-picker .day-of-month{
+   -fx-background-fill:white;
+   -fx-border-color:  #3278fa;
+   -fx-border-radius: 4px;
+   -fx-border-width: 2px ;
+}
+
+.date-cell {
+ /*    -fx-background-color: white;
+        -fx-background-radius: 8;*/
+        -fx-font-size: 14.0;
+}
+.date-cell .date-chooser {
+    -fx-background-color: red;
+        -fx-background-radius: 8;
+        -fx-font-size: 14.0;
+}
+
+.date-cell:hover {
+    -fx-background-color: #ad68cb;
+    -fx-font-size: 14.0;
+    -fx-text-fill: white;
+}
+.date-cell.selected {
+    -fx-background-color: #d72834;
+    -fx-font-size: 14.0;
+    -fx-text-fill: white;
 }

@@ -15,8 +15,8 @@ module gs.accesorios {
     requires commons.javaflow;
     requires commons.logging;
     requires commons.collections;
-
     requires jasperreports.fonts;
+    requires itextpdf;
 
 
     opens Menu;

@@ -1,5 +1,8 @@
 package Producto;
 
+import ClassAux.ImprimirVale;
+import Informe.DAO.DataProductoInvetario;
+import Informe.DAO.ProductoInvetario;
 import Producto.DAO.DataProducto;
 import Producto.DAO.Producto;
 import javafx.collections.FXCollections;
@@ -20,11 +23,11 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProductoController implements Initializable {
     public ListView<Producto> listProducto;
-    public Button btnNuevo;
     public TextField txtBuscar;
 
 
@@ -33,6 +36,8 @@ public class ProductoController implements Initializable {
 
   static    ObservableList<Producto> productos ;
   static    FilteredList<Producto> proData;
+    public Button btnInventario;
+    public Button btnIngresarNuevo;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -116,5 +121,20 @@ public class ProductoController implements Initializable {
             e.printStackTrace();
 
     }
+    }
+
+    public void verInvetario(ActionEvent actionEvent) {
+        int total_prodcuto=0;
+        float costo_total=0;
+        DataProductoInvetario invetario=new DataProductoInvetario();
+        ObservableList<ProductoInvetario> list=FXCollections.observableArrayList(invetario.productoInventario());
+        for (int i=0; i<list.size();i++){
+            costo_total= costo_total+ list.get(i).getSubtotal();
+            total_prodcuto=total_prodcuto+list.get(i).getCantidad();
+        }
+        ImprimirVale imprimirVale=new ImprimirVale();
+        imprimirVale.InventarioProducto(list,total_prodcuto,costo_total,false);
+
+
     }
 }

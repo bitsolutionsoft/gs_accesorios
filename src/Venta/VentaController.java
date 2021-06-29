@@ -42,6 +42,8 @@ public class VentaController implements Initializable {
     public TextField txtBuscar;
     public Label lblCambio;
     public Button btnLimpiar;
+    public CheckBox chbxImprimir;
+    public CheckBox chbxGuardar;
     AlertDialog alertDialog=new AlertDialog();
     public TableView <ProductoDisponible>tblProductoDisponible;
     public TableColumn<ProductoDisponible, String> codigoPro;
@@ -69,14 +71,11 @@ public class VentaController implements Initializable {
     ArrayList<ProductoDisponible> listaProducto = new ArrayList<>();
     ArrayList<DetalleFactura> proSelecionado = new ArrayList<>();
     ObservableList<DetalleFactura> proSeleccionados;
-    ObservableList<Cliente> datoClient;
     DataLote dataLote=new DataLote();
     ObservableList<Lote> datosLote= FXCollections.observableArrayList(dataLote.viewLote("viewall"));
-    ObservableList <Float> listPrecios=FXCollections.observableArrayList();
-
-    ArrayList<Lote> dat = new ArrayList<>();
     SizeColumnTable ajustarColumna=new SizeColumnTable();
-
+    private Boolean imprimirFact=false;
+    private Boolean guardarFact=false;
 
 
 
@@ -88,6 +87,7 @@ public class VentaController implements Initializable {
        llenarTablaDisponible();
        llenarComboCliente(false);
         EventoSeleccionarProducto();
+       // chbxGuardar.setVisible(false);
        btnLimpiar.setVisible(false);
 
     }
@@ -138,9 +138,9 @@ public class VentaController implements Initializable {
                     }else{
                         row=(TableRow<ProductoDisponible>) node.getParent();
                     }
-
-                    DescontarProducto(row.getItem(),1);
-
+                    if(row.getItem()!=null) {
+                        DescontarProducto(row.getItem(), 1);
+                    }
                 }
             }
         });
@@ -390,27 +390,30 @@ MenuItem itemPrecio=new MenuItem("Seleccionar precio");
         @Override
         public void handle(ActionEvent actionEvent) {
             DetalleFactura detalleFactura=tblProductoSeleccionado.getSelectionModel().getSelectedItem();
-            devolver(detalleFactura,detalleFactura.getCantidad(),true);
+            if (detalleFactura!=null) {
+                devolver(detalleFactura, detalleFactura.getCantidad(), true);
+            }
         }
     });
 
     itemPrecio.setOnAction(new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent actionEvent) {
-            DetalleFactura detalle=tblProductoSeleccionado.getSelectionModel().getSelectedItem();
-            ArrayList<Float> lis=new ArrayList<>(retornarPrecio(detalle));
+            DetalleFactura detalle = tblProductoSeleccionado.getSelectionModel().getSelectedItem();
+            ArrayList<Float> lis = new ArrayList<>(retornarPrecio(detalle));
+            if (lis != null) {
+                Float nuevo = alertDialog.SelectPrecion(lis);
 
-            Float nuevo= alertDialog.SelectPrecion(lis);
-
-            if (nuevo!=null) {
-                for (int i = 0; i < proSelecionado.size(); i++) {
-                    if (proSelecionado.get(i).getIdlote() == detalle.getIdlote() && proSelecionado.get(i).getIdproducto() == detalle.getIdproducto()) {
-                        proSelecionado.get(i).setPrecio(nuevo);
-                        refresacarLista();
+                if (nuevo != null) {
+                    for (int i = 0; i < proSelecionado.size(); i++) {
+                        if (proSelecionado.get(i).getIdlote() == detalle.getIdlote() && proSelecionado.get(i).getIdproducto() == detalle.getIdproducto()) {
+                            proSelecionado.get(i).setPrecio(nuevo);
+                            refresacarLista();
+                        }
                     }
                 }
-            }
 
+            }
         }
     });
     contextMenu.getItems().add(itemPrecio);
@@ -505,7 +508,7 @@ lblNoOrden.setText(String.valueOf(dataProDisponible.orden()));
             }
             ImprimirVale imprimir=new ImprimirVale();
             Modelo_factura modelo=new Modelo_factura();
-            imprimir.LlenarFactura(modelo.datosFactura(proSeleccionados),lblNoOrden.getText(),false,false,txtFecha.getText(),cbxCliente.getSelectionModel().getSelectedItem().getNombre()+" "+cbxCliente.getSelectionModel().getSelectedItem().getApellido(),"Ciudad",Float.parseFloat(lblTotal.getText()),cbxCliente.getSelectionModel().getSelectedItem().getNit());
+            imprimir.LlenarFactura(modelo.datosFactura(proSeleccionados),lblNoOrden.getText(),guardarFact,imprimirFact,txtFecha.getText(),cbxCliente.getSelectionModel().getSelectedItem().getNombre()+" "+cbxCliente.getSelectionModel().getSelectedItem().getApellido(),"Ciudad",Float.parseFloat(lblTotal.getText()),cbxCliente.getSelectionModel().getSelectedItem().getNit());
         }
         btnLimpiar.setVisible(true);
     }
@@ -518,5 +521,21 @@ lblNoOrden.setText(String.valueOf(dataProDisponible.orden()));
         tblProductoSeleccionado.refresh();
         llenarTablaDisponible();
         numeroOrder();
+    }
+
+    public void confirmarImpresion(ActionEvent actionEvent) {
+        if (chbxImprimir.isSelected()){
+            imprimirFact=true;
+        }else {
+            imprimirFact=false;
+        }
+    }
+
+    public void confirmarGuardar(ActionEvent actionEvent) {
+        if ((chbxGuardar.isSelected())){
+            guardarFact=true;
+        }else{
+            guardarFact=false;
+        }
     }
 }

@@ -214,7 +214,7 @@ public class ProCell extends ListCell<Producto> {
         rowProducto.setpMayor(producto.getPrecio_mayor());
         rowProducto.setpUnidad(producto.getPrecio_unidad());
         rowProducto.setMaxima(producto.getMaximo());
-        rowProducto.setMinima(producto.getMinimo());
+        rowProducto.setMinima(producto.getMinimo(),producto.getStock());
         rowProducto.setStock(producto.getStock());
         rowProducto.setProveedor(producto.getProveedor());
         rowProducto.setCantidadlote(producto.getCantidad());

@@ -7,9 +7,9 @@
     <children>
         <GridPane hgap="5.0" vgap="5.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="573.0" minWidth="10.0" prefWidth="532.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" minWidth="10.0" prefWidth="201.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="222.0" minWidth="0.0" prefWidth="3.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="573.0" minWidth="10.0" prefWidth="415.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="249.0" minWidth="0.0" prefWidth="226.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" minWidth="10.0" prefWidth="95.0" />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
@@ -19,6 +19,7 @@
             <children>
                 <Button fx:id="btnIngresarNuevo" mnemonicParsing="false" onAction="#nuevoProducto" prefHeight="25.0" prefWidth="201.0" text="Ingresar Nuevo Producto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <TextField fx:id="txtBuscar" prefHeight="37.0" prefWidth="365.0" promptText="Buscar..." GridPane.rowIndex="1" />
+            <Button  id="btnSecundario"  fx:id="btnInventario" mnemonicParsing="false" onAction="#verInvetario" text="Inventario" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             </children>
         </GridPane>
         <ListView id="listView" fx:id="listProducto" prefHeight="544.0" prefWidth="600.0" />

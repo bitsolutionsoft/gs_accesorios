@@ -77,10 +77,16 @@
                               <Label fx:id="lblCambio" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                            <children>
                               <Button id="btnSecundario" fx:id="btnLimpiar" mnemonicParsing="false" onAction="#NuevaVenta" prefHeight="35.0" prefWidth="176.0" text="Nueva Venta" />
                               <Button id="btnPrimario" fx:id="btnVender" mnemonicParsing="false" onAction="#RealizarVenta" prefHeight="35.0" prefWidth="176.0" text="Vender" />
+                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                 <children>
+                                    <CheckBox fx:id="chbxImprimir" mnemonicParsing="false" onAction="#confirmarImpresion" text="Imprimir" />
+                                    <CheckBox fx:id="chbxGuardar" mnemonicParsing="false" onAction="#confirmarGuardar" text="Guardar" />
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
                      </children>

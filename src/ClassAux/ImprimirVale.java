@@ -1,10 +1,14 @@
 package ClassAux;
 
+import Informe.DAO.ProductoInvetario;
 import Venta.DAO.DetalleFactura;
 import Venta.DAO.Modelo_factura;
+
+
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
+import org.apache.commons.collections.map.HashedMap;
 
 import javax.swing.*;
 import java.io.File;
@@ -17,8 +21,11 @@ import java.util.Map;
 
 
 public class ImprimirVale {
-    private final String path=System.getProperty("user.home")+ File.separator+"gsaccesorios"+File.separator+"gsfactura.jasper";
-    private final String rutaFactura=path+File.separator+"plantillas"+File.separator+"facturare.jasper";
+    private final String path=System.getProperty("user.home")+ File.separator+"gsaccesorios";
+    private final String Fac= path+File.separator+"gsfactura.jasper";
+    private final String Inv=path+File.separator+"productos.jasper";
+
+
    public void LlenarFactura(List<Modelo_factura> lista, String orden, boolean guardar, boolean imprimir, String fecha, String cliente, String direccion, float total, String nit){
 
        Map<String,Object> par= new HashMap<>();
@@ -32,7 +39,7 @@ public class ImprimirVale {
 
         // par.put("logo2", this.getClass().getResourceAsStream(logo2));
         try {
-            JasperPrint jPrint = JasperFillManager.fillReport(path, par,
+            JasperPrint jPrint = JasperFillManager.fillReport(Fac, par,
                     new JRBeanCollectionDataSource(lista));
             if(imprimir){
                 JasperPrintManager.printReport(jPrint, false);
@@ -41,7 +48,7 @@ public class ImprimirVale {
             jasperViewer.setTitle("FACTURA");
             jasperViewer.setVisible(true);
             if(guardar){
-                JasperExportManager.exportReportToPdfFile(jPrint,  path+File.separator+getFecha()+" Factura "+orden+".pdf");
+                JasperExportManager.exportReportToPdfFile(jPrint,  path+File.separator+getFecha()+"factura"+orden+".pdf");
                 //  JasperExportManager.exportReportToPdfFile(jPrint,  path+File.separator+"constancia"+File.separator+"factura"+orden+".pdf");
             }
         } catch (JRException e) {
@@ -49,6 +56,31 @@ public class ImprimirVale {
             Util.Advertencia("",""+e);
             JOptionPane.showMessageDialog(null,""+e);
         }
+    }
+
+    public void InventarioProducto(List<ProductoInvetario> lista, int totalpro, float totalfinal,
+                                   boolean imprimir){
+        Map<String,Object> par = new HashedMap();
+        par.put("totalpro",totalpro);
+        par.put("totalfinal",totalfinal);
+
+        try {
+            JasperPrint jPrint = JasperFillManager.fillReport(Inv, par,
+                    new JRBeanCollectionDataSource(lista));
+            if(imprimir){
+                JasperPrintManager.printReport(jPrint, false);
+            }
+
+            JasperViewer jasperViewer = new JasperViewer(jPrint,false);
+            jasperViewer.setTitle("Productos en invetario");
+            jasperViewer.setVisible(true);
+
+            JasperExportManager.exportReportToPdfFile(jPrint,  path+File.separator+getFecha()+"invetario.pdf");
+        } catch (JRException e) {
+            e.printStackTrace();
+            Util.Advertencia("",""+e);
+        }
+
     }
 
     private String getFecha(){

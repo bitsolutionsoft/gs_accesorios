@@ -30,5 +30,8 @@
     <orderEntry type="library" name="commons-beanutils-1.9.0" level="project" />
     <orderEntry type="library" name="commons-collections-3.2.1" level="project" />
     <orderEntry type="library" name="commons-collections4-4.3-javadoc" level="project" />
+    <orderEntry type="library" name="itextpdf-5.4.1" level="project" />
+    <orderEntry type="library" name="jfreechart-1.0.12" level="project" />
+    <orderEntry type="library" name="itext-2.1.7.js4" level="project" />
   </component>
 </module>
