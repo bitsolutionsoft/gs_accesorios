@@ -80,7 +80,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Button fx:id="btnAgregar" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0" GridPane.rowIndex="1" />
                 <Button fx:id="btnEliminar" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Button fx:id="btnEditar" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             </children>

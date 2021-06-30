@@ -28,7 +28,7 @@ public class RowProveedor {
     public Button btnEliminar;
     public Button btnEditar;
     public HBox rootRow;
-    public Button btnAgregar;
+
     public Label estado;
     private Proveedor proveedor;
     //El estilo de cada boton
@@ -115,10 +115,7 @@ public class RowProveedor {
         btnEliminar.setStyle(estiloBoton);
         btnEliminar.setPrefHeight(35);
         btnEliminar.setPrefWidth(20);
-        btnAgregar.setGraphic(icono("/img/plus.png"));
-        btnAgregar.setStyle(estiloBoton);
-        btnAgregar.setPrefHeight(35);
-        btnAgregar.setPrefWidth(20);
+
     }
     public static ImageView icono(String url){
         ImageView imageView = new ImageView(url);

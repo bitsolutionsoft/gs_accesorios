@@ -4,16 +4,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="1072.0" stylesheets="/Style/StyleForm.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Proveedor.FormProveedor">
+<GridPane id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="648.0" stylesheets="/Style/StyleForm.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Proveedor.FormProveedor">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="39.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="477.0" minWidth="10.0" prefWidth="472.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="39.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints maxHeight="94.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="650.0" minHeight="10.0" prefHeight="491.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="146.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="94.0" minHeight="0.0" prefHeight="56.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="650.0" minHeight="10.0" prefHeight="415.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="146.0" minHeight="0.0" prefHeight="64.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="70.0" minHeight="7.0" prefHeight="22.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>

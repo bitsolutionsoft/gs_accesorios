@@ -1,5 +1,6 @@
 package Proveedor;
 
+import ClassAux.Formato;
 import ClassAux.Util;
 import Cliente.DAO.Cliente;
 import Cliente.DAO.DataCliente;
@@ -41,21 +42,16 @@ public class FormProveedor implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         estado("Activo");
-        labelTitulo.setText("Ingresar Producto");
+        labelTitulo.setText("Ingresar nuevo proveedor");
         definirSexo();
-        //iniciar_combo_pro_col(0,0);
-/*
-        txtPrecioMayorista.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                if(!txtPrecioCompra.getText().isEmpty() && !txtPrecioMayorista.getText().isEmpty()
-                ){
-                    if (Float.parseFloat( txtPrecioCompra.getText()) > Float.parseFloat(txtPrecioMayorista.getText())){
-                        Util.Error("precio", "El precio ingresado debe ser mayor que el precio de compra");
-                    }
-                }
-            }
-        });*/
+        validarFormato();
+    }
+    public  void validarFormato(){
+        Formato formato=new Formato();
+        txtCodigo.setEditable(false);
+        formato.entero(txtTelefonouno,8);
+        formato.entero(txtTelefonodos,8);
+
     }
 
     public void pasarRegistro(Proveedor proveedor) {

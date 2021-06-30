@@ -6,7 +6,7 @@
 
 <HBox id="rowListView" fx:id="rootRow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="956.0" stylesheets="/Style/StyleModulo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cliente.RowCliente">
     <children>
-        <VBox prefHeight="124.0" prefWidth="100.0" spacing="5.0">
+        <VBox prefHeight="110.0" prefWidth="144.0" spacing="5.0">
             <children>
                 <Label id="subtituloItem" text="Codigo" />
                 <Label id="descripcionItem" fx:id="codigo" text="Label" />
@@ -17,14 +17,14 @@
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
         </VBox>
-        <VBox prefHeight="24.0" prefWidth="344.0">
+        <VBox prefHeight="110.0" prefWidth="434.0">
             <children>
-                <Label id="tituloItem" prefHeight="7.0" prefWidth="44.0" text="Nombre" />
+                <Label id="tituloItem" prefHeight="17.0" prefWidth="243.0" text="Nombre" />
                 <Label id="descripcionItem" fx:id="nombre" prefHeight="18.0" prefWidth="338.0" text="Label" />
                 <Label id="subtituloItem" prefHeight="18.0" prefWidth="71.0" text="Nit" />
                 <Label id="descripcionItem" fx:id="nit" prefHeight="18.0" prefWidth="337.0" text="Label" />
             </children></VBox>
-        <VBox prefHeight="110.0" prefWidth="209.0">
+        <VBox prefHeight="110.0" prefWidth="233.0">
             <children>
                 <Label id="tituloItem" text="Telefonos:" />
                 <GridPane prefHeight="62.0" prefWidth="212.0">
@@ -45,29 +45,6 @@
                     </children>
                 </GridPane>
             </children></VBox>
-        <VBox prefHeight="110.0" prefWidth="161.0">
-            <children>
-                <GridPane>
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.6" minWidth="10.0" prefWidth="153.6" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="0.0" prefWidth="0.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                    <children>
-                        <Label id="descripcionItem" fx:id="Direccion" prefHeight="18.0" prefWidth="87.0" GridPane.rowIndex="2" />
-                        <Label id="subtituloItem" prefHeight="18.0" prefWidth="121.0" text="Direccion" />
-                        <Label id="descripcionItem" fx:id="direccion" prefHeight="18.0" prefWidth="188.0" text="Label" GridPane.rowIndex="1" />
-                        <Label id="subtituloItem" text="Estado" GridPane.rowIndex="2" />
-                        <Label id="descripcionItem" fx:id="estado" text="Label" GridPane.rowIndex="3" />
-                    </children>
-                </GridPane>
-            </children></VBox>
         <GridPane prefHeight="95.0" prefWidth="123.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -80,7 +57,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Button fx:id="btnAgregar" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0" GridPane.rowIndex="1" />
                 <Button fx:id="btnEliminar" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Button fx:id="btnEditar" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             </children>

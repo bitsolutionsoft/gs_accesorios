@@ -1,5 +1,6 @@
 package Cliente;
 
+import ClassAux.Formato;
 import ClassAux.Util;
 import Cliente.DAO.Cliente;
 import Cliente.DAO.DataCliente;
@@ -16,10 +17,6 @@ import java.util.ResourceBundle;
 public class FormCliente implements Initializable {
 
 
-    public Button btnIngresarProveedor;
-
-    public CheckBox chbActivo;
-    public CheckBox chbNoActivo;
     public TextField txtCodigo;
     public TextField txtNombre;
     public TextField txtApellido;
@@ -40,19 +37,15 @@ public class FormCliente implements Initializable {
 
         labelTitulo.setText("Ingresar Cliente");
         definirSexo();
-        //iniciar_combo_pro_col(0,0)
-/*
-        txtPrecioMayorista.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                if(!txtPrecioCompra.getText().isEmpty() && !txtPrecioMayorista.getText().isEmpty()
-                ){
-                    if (Float.parseFloat( txtPrecioCompra.getText()) > Float.parseFloat(txtPrecioMayorista.getText())){
-                        Util.Error("precio", "El precio ingresado debe ser mayor que el precio de compra");
-                    }
-                }
-            }
-        });*/
+        validarFormato();
+    }
+    public  void validarFormato(){
+        Formato formato=new Formato();
+        txtCodigo.setEditable(false);
+
+        formato.entero(txtTelefonodos,8);
+        formato.entero(txtTelefonouno,8);
+
     }
 
     public void pasarRegistro(Cliente cliente) {

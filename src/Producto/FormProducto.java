@@ -2,7 +2,6 @@ package Producto;
 
 import ClassAux.Formato;
 import ClassAux.Util;
-import ClassAux.formatos;
 import Colocacion.DAO.Colocacion;
 import Colocacion.DAO.DataColocacion;
 import Producto.DAO.DataLote;
@@ -14,20 +13,16 @@ import Proveedor.DAO.Proveedor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class FormProducto implements Initializable {

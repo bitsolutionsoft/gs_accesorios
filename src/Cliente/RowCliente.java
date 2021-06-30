@@ -35,8 +35,8 @@ public class RowCliente implements Initializable {
     public Button btnEliminar;
     public Button btnEditar;
     public HBox rootRow;
-    public Button btnAgregar;
-    private Cliente cliente;
+
+
     //El estilo de cada boton
     private final String estiloBoton="" +
             "-fx-background-color:#edebe9;" +
@@ -82,6 +82,7 @@ public class RowCliente implements Initializable {
 
 
 
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 //esta funcion es para iniciar los botones y sus respectivos iconos
@@ -107,10 +108,7 @@ public class RowCliente implements Initializable {
         btnEliminar.setStyle(estiloBoton);
         btnEliminar.setPrefHeight(35);
         btnEliminar.setPrefWidth(20);
-        btnAgregar.setGraphic(icono("/img/plus.png"));
-        btnAgregar.setStyle(estiloBoton);
-        btnAgregar.setPrefHeight(35);
-        btnAgregar.setPrefWidth(20);
+
     }
     public static ImageView icono(String url){
         ImageView imageView = new ImageView(url);

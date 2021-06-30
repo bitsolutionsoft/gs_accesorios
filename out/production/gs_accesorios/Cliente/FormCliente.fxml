@@ -3,17 +3,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="1072.0" stylesheets="/Style/StyleForm.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cliente.FormCliente">
+<GridPane id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="547.0" prefWidth="679.0" stylesheets="/Style/StyleForm.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cliente.FormCliente">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="39.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="477.0" minWidth="10.0" prefWidth="472.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="39.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints maxHeight="94.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="650.0" minHeight="10.0" prefHeight="491.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="146.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="70.0" minHeight="7.0" prefHeight="22.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="94.0" minHeight="0.0" prefHeight="49.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="650.0" minHeight="10.0" prefHeight="380.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="146.0" minHeight="0.0" prefHeight="74.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="70.0" minHeight="7.0" prefHeight="45.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
         <GridPane hgap="5.0" vgap="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -29,9 +29,7 @@
                 <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="149.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="155.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="32.0" />
                 <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="16.0" />
             </rowConstraints>
             <children>
@@ -47,8 +45,8 @@
                 <TextField fx:id="txtTelefonodos" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 <Label text="Nit:" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                 <TextField fx:id="txtNit" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                <Label text="Sexo" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                <Label text="Sexo" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                     <children>
                         <CheckBox fx:id="chboxHombre" mnemonicParsing="false" onAction="#SeleccionarHombre" text="Hombre" />
                         <CheckBox fx:id="chboxMujer" mnemonicParsing="false" onAction="#SeleccionarMujer" text="Mujer" />

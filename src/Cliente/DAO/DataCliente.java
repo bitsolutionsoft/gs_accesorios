@@ -65,8 +65,8 @@ public class DataCliente {
             callableStatement.setString(3,cliente.apellido);
             callableStatement.setInt(4,cliente.telefonoUno);
             callableStatement.setInt(5,cliente.telefonoDos);
-            callableStatement.setString(6,cliente.nit);
-            callableStatement.setString(7,cliente.sexo);
+            callableStatement.setString(6,cliente.sexo);
+            callableStatement.setString(7,cliente.nit);
             callableStatement.setString(8,accion);
 
             callableStatement.execute();
