@@ -1,5 +1,6 @@
 package Producto;
 
+import ClassAux.Formato;
 import ClassAux.Util;
 import ClassAux.formatos;
 import Colocacion.DAO.Colocacion;
@@ -52,7 +53,9 @@ public class FormProducto implements Initializable {
     public Label labelTitulo;
     private   String accion="new";
     private String estado="Activo";
-formatos formato=new formatos();
+    Colocacion colAnterior =null;
+    Proveedor proAnterior=null;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -61,9 +64,7 @@ formatos formato=new formatos();
         txtIdlote.setEditable(false);
         iniciar_combo_col(0);
         iniciar_combo_pro(0);
-formato.entero(txtCantidad);
-formato.entero(txtMaxima);
-formato.entero(txtMaxima);
+validarFormato();
 //formato.decimal(txtPrecioCompra);
 /*
         txtPrecioMayorista.setOnKeyReleased(new EventHandler<KeyEvent>() {
@@ -77,6 +78,18 @@ formato.entero(txtMaxima);
                 }
             }
         });*/
+    }
+    public  void validarFormato(){
+        Formato formato=new Formato();
+        formato.entero(txtCodigo,15);
+        formato.entero(txtIdlote,0);
+        formato.entero(txtCantidad,0);
+        formato.entero(txtMinima,3);
+        formato.entero(txtMaxima,3);
+        formato.decimal(txtPrecioCompra);
+        formato.decimal(txtPrecioMayorista);
+        formato.decimal(txtPrecioMayor);
+        formato.decimal(txtPrecioUnidad);
     }
 
     public void pasarRegistro(Producto producto){
@@ -196,7 +209,6 @@ formato.entero(txtMaxima);
             chbActivo.setSelected(false);
         }
     }
-
     public  void iniciar_combo_pro(int proveedor){
         DataProveedor dataProveedor=new DataProveedor();
         ArrayList<Proveedor> listProveedor= dataProveedor.viewProveedor("viewlast");
@@ -209,6 +221,7 @@ formato.entero(txtMaxima);
             for (int i=0; i<obListProveedor.size();i++){
                 if (proveedor==obListProveedor.get(i).getIdProveedor()){
                     Proveedor proveedor1=new Proveedor(obListProveedor.get(i).getIdProveedor(),obListProveedor.get(i).getNombre(),obListProveedor.get(i).getApellido(),obListProveedor.get(i).getTelefonoUno(),obListProveedor.get(i).getTelefonoDos(),obListProveedor.get(i).getCompania(),obListProveedor.get(i).getDireccion(),obListProveedor.get(i).getSexo(),obListProveedor.get(i).getEstado());
+                    proAnterior=proveedor1;
                     cbProveedor.getSelectionModel().select(proveedor1);
 
                 }
@@ -229,8 +242,9 @@ formato.entero(txtMaxima);
 
         if (colocacion >0){
             for (int i=0; i<obListColocacion.size();i++){
-                if (colocacion==obListColocacion.get(i).getIdColocacion()){
-                    Colocacion colocacion1=new Colocacion(obListColocacion.get(i).getIdColocacion(), obListColocacion.get(i).getNombre(),obListColocacion.get(i).getEstado());
+                if (colocacion==obListColocacion.get(i).getIdColocacion()) {
+                    Colocacion colocacion1 = new Colocacion(obListColocacion.get(i).getIdColocacion(), obListColocacion.get(i).getNombre(), obListColocacion.get(i).getEstado());
+                    colAnterior =colocacion1;
                     cbColocacion.getSelectionModel().select(colocacion1);
                 }
             }
@@ -238,7 +252,6 @@ formato.entero(txtMaxima);
         }
 
     }
-
     public  Producto returnProducto(){
         Producto producto=new Producto();
         if (txtCodigo.getText().isEmpty()){
@@ -246,96 +259,125 @@ formato.entero(txtMaxima);
         }else{
             producto.setCodigo(Integer.parseInt(txtCodigo.getText()));
         }
-            if (txtNombre.getText().isEmpty()){
-                Util.Error("Error","El campo  nombre esta vacío");
+
+        if (colAnterior !=null){
+
+            if (!cbColocacion.getSelectionModel().isEmpty()){
+                producto.setIdcolocacion(cbColocacion.getSelectionModel().getSelectedItem().getIdColocacion());
+            }else
+            {
+                producto.setIdcolocacion(colAnterior.getIdColocacion());
+            }
+        }else{
+            if (cbColocacion.getSelectionModel().isEmpty() ){
+                Util.Error("Colocacion","Selecione la colocaion del producto");
                 return null;
             }else{
-                producto.setNombre(txtNombre.getText());
-                if (txtModelo.getText().isEmpty()){
-                    Util.Error("Error","El campo  modelo esta vacío");
+
+                producto.setIdcolocacion(cbColocacion.getSelectionModel().getSelectedItem().getIdColocacion());
+            }
+
+        }
+
+
+        if (proAnterior !=null){
+            if (!cbProveedor.getSelectionModel().isEmpty()){
+                producto.setIdproveedor(cbProveedor.getSelectionModel().getSelectedItem().getIdProveedor());
+            }else
+            {
+                producto.setIdproveedor(proAnterior.getIdProveedor());
+            }
+        }else{
+            if (cbProveedor.getSelectionModel().isEmpty() ){
+                Util.Error("Colocacion","Selecione el proveedor del producto");
+                return null;
+            }else{
+                producto.setIdproveedor(cbProveedor.getSelectionModel().getSelectedItem().getIdProveedor());
+            }
+
+        }
+
+
+
+        if (txtNombre.getText().isEmpty()){
+            Util.Error("Error","El campo  nombre esta vacío");
+            return null;
+        }else{
+            producto.setNombre(txtNombre.getText());
+            if (txtModelo.getText().isEmpty()){
+                Util.Error("Error","El campo  modelo esta vacío");
+                return null;
+            }else{
+                producto.setModelo(txtModelo.getText());
+                if (txtEspecificacion.getText().isEmpty()){
+                    Util.Error("Error","El campo  especificacion esta vacío");
                     return null;
                 }else{
-                    producto.setModelo(txtModelo.getText());
-                    if (txtEspecificacion.getText().isEmpty()){
-                        Util.Error("Error","El campo  especificacion esta vacío");
-                        return null;
+                    producto.setEspecificacion(txtEspecificacion.getText());
+                    if (txtCantidad.getText().isEmpty()){
+                        Util.Error("Error","El campo  cantidad esta vacío");
+                        return  null;
                     }else{
-                        producto.setEspecificacion(txtEspecificacion.getText());
-                        if (txtCantidad.getText().isEmpty()){
-                            Util.Error("Error","El campo  cantidad esta vacío");
-                            return  null;
+                        producto.setStock(Integer.parseInt( txtCantidad.getText()));
+                        if (txtMaxima.getText().isEmpty()){
+                            Util.Error("Error","El campo cantidad maxima esta vacío");
+                            return null;
                         }else{
-                            producto.setStock(Integer.parseInt( txtCantidad.getText()));
-                            if (txtMaxima.getText().isEmpty()){
-                                Util.Error("Error","El campo cantidad maxima esta vacío");
+                            producto.setMaximo(Integer.parseInt(txtMaxima.getText()));
+                            if (txtMinima.getText().isEmpty()){
+                                Util.Error("Error","El campo  cantidad minima  esta vacío");
                                 return null;
                             }else{
-                                producto.setMaximo(Integer.parseInt(txtMaxima.getText()));
-                                if (txtMinima.getText().isEmpty()){
-                                    Util.Error("Error","El campo  cantidad minima  esta vacío");
+                                producto.setMinimo(Integer.parseInt(txtMinima.getText()));
+                                if (txtPrecioCompra.getText().isEmpty()){
+                                    Util.Error("Error","El campo  precio compra esta vacío");
                                     return null;
                                 }else{
-                                    producto.setMinimo(Integer.parseInt(txtMinima.getText()));
-                                    if (txtPrecioCompra.getText().isEmpty()){
-                                        Util.Error("Error","El campo  precio compra esta vacío");
+                                    producto.setPrecio_compra(Float.parseFloat(txtPrecioCompra.getText()));
+                                    if (txtPrecioMayorista.getText().isEmpty()){
+                                        Util.Error("Error","El campo  precio de venta mayorista esta vacío");
                                         return null;
                                     }else{
-                                        producto.setPrecio_compra(Float.parseFloat(txtPrecioCompra.getText()));
-                                        if (txtPrecioMayorista.getText().isEmpty()){
-                                            Util.Error("Error","El campo  precio de venta mayorista esta vacío");
+                                        producto.setPrecio_mayorista(Float.parseFloat(txtPrecioMayorista.getText()));
+                                        if (txtPrecioMayor.getText().isEmpty()){
+                                            Util.Error("Error","El campo  precio de venta por  mayor esta vacío");
                                             return null;
                                         }else{
-                                            producto.setPrecio_mayorista(Float.parseFloat(txtPrecioMayorista.getText()));
-                                            if (txtPrecioMayor.getText().isEmpty()){
-                                                Util.Error("Error","El campo  precio de venta por  mayor esta vacío");
+                                            producto.setPrecio_mayor(Float.parseFloat(txtPrecioMayor.getText()));
+                                            if (txtPrecioUnidad.getText().isEmpty()){
+                                                Util.Error("Error","El campo  precio de venta por unidad esta vacío");
                                                 return null;
                                             }else{
-                                                producto.setPrecio_mayor(Float.parseFloat(txtPrecioMayor.getText()));
-                                                if (txtPrecioUnidad.getText().isEmpty()){
-                                                    Util.Error("Error","El campo  precio de venta por unidad esta vacío");
+                                                producto.setPrecio_unidad(Float.parseFloat(txtPrecioUnidad.getText()));
+                                                if (estado.isEmpty()){
+                                                    Util.Error("Error","Seleccione el estado del producto");
                                                     return null;
-                                                }else{
-                                                    producto.setPrecio_unidad(Float.parseFloat(txtPrecioUnidad.getText()));
-                                                    if (cbColocacion.getSelectionModel().isEmpty()){
-                                                        Util.Error("Error","Seleccione la colocacion del producto");
-                                                        return null;
+                                                }else {
+                                                    producto.setEstado(estado);
+                                                    if (txtIdlote.getText().isEmpty()){
+                                                        producto.setIdlote(0);
+                                                        return  producto;
                                                     }else{
-                                                        producto.setIdcolocacion(cbColocacion.getSelectionModel().getSelectedItem().getIdColocacion());
-                                                        if (cbProveedor.getSelectionModel().isEmpty()){
-                                                            Util.Error("Error","Seleccione el proveedor del producto");
-                                                            return null;
-                                                        }else {
-                                                            producto.setIdproveedor(cbProveedor.getSelectionModel().getSelectedItem().getIdProveedor());
-                                                            if (estado.isEmpty()){
-                                                                Util.Error("Error","Seleccione el estado del producto");
-                                                                return null;
-                                                            }else {
-                                                                producto.setEstado(estado);
-                                                                if (txtIdlote.getText().isEmpty()){
-                                                                    producto.setIdlote(0);
-                                                                    return  producto;
-                                                                }else{
-                                                                    producto.setIdlote(Integer.parseInt( txtIdlote.getText()));
-                                                                    return producto;
-                                                                }
-
-                                                            }
-                                                        }
+                                                        producto.setIdlote(Integer.parseInt( txtIdlote.getText()));
+                                                        return producto;
                                                     }
+
                                                 }
                                             }
                                         }
                                     }
-
                                 }
+
                             }
                         }
                     }
                 }
+            }
 
         }
 
-}
+    }
+
 
 public  void limpiar(){
         txtCodigo.setText("");
@@ -349,10 +391,14 @@ public  void limpiar(){
         txtPrecioMayorista.setText("");
         txtPrecioMayor.setText("");
         txtPrecioUnidad.setText("");
-        txtIdlote.setText("");
-        cbProveedor.getSelectionModel().clearSelection();
-        cbColocacion.getSelectionModel().clearSelection();
-        estado("Activo");
+        txtIdlote.setText("");  cbProveedor.getItems().clear();
+    cbColocacion.getItems().clear();
+    iniciar_combo_pro(0);
+    iniciar_combo_col(0);
+    proAnterior=null;
+    colAnterior=null;
+
+    estado("Activo");
 }
 
 }

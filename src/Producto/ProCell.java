@@ -219,11 +219,15 @@ public class ProCell extends ListCell<Producto> {
         rowProducto.setProveedor(producto.getProveedor());
         rowProducto.setCantidadlote(producto.getCantidad());
         rowProducto.setIdlote(producto.getIdlote());
-        if (producto.getMinimo()>producto.getStock()){
+        if (producto.getStock()<producto.getMinimo()){
             rowProducto.mostrarMinima("menor");
+
         }
         if (producto.getMinimo()==producto.getStock()){
            rowProducto.mostrarMinima("igual");
+        }
+        if (producto.getStock()>producto.getMinimo()){
+            rowProducto.mostrarMinima("mayor");
         }
 
         setGraphic(graphic);

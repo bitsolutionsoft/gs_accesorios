@@ -37,12 +37,12 @@ public class FormProveedor implements Initializable {
     public CheckBox chboxMujer;
     private String accion = "new"; // por default es new
     private String estado = "Activo";
-private  String sexo="Hombre";
+    private  String sexo="Hombre";
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         estado("Activo");
         labelTitulo.setText("Ingresar Producto");
-definirSexo();
+        definirSexo();
         //iniciar_combo_pro_col(0,0);
 /*
         txtPrecioMayorista.setOnKeyReleased(new EventHandler<KeyEvent>() {
@@ -138,6 +138,8 @@ definirSexo();
             proveedor.setSexo(sexo);
             proveedor.setEstado(estado);
         }
+        if (!txtTelefonodos.getText().isEmpty()){ proveedor.setTelefonoDos(Integer.parseInt(txtTelefonodos.getText())); }else{proveedor.setTelefonoDos(0);}
+
         if (!txtCompania.getText().isEmpty()){ proveedor.setCompania(txtCompania.getText()); }else{proveedor.setCompania("");} //hace para los campos no obligatorio asi com esta este
         if (!txtDireccion.getText().isEmpty()){ proveedor.setDireccion(txtDireccion.getText()); }else{proveedor.setDireccion("");}
 //jajaja proba otara vez no dio
@@ -171,13 +173,13 @@ definirSexo();
     }
     public  void limpiar() {
         txtCodigo.setText("");
-            txtNombre.setText("");
+        txtNombre.setText("");
         txtApellido.setText("");
         txtTelefonouno.setText("");
         txtTelefonodos.setText("");
         txtDireccion.setText("");
-    sexo="Hombre";
-    definirSexo();
+        sexo="Hombre";
+        definirSexo();
         txtCompania.setText("");
 
         estado("Activo");// VOS Y ESTADO COMO LE HAGO
@@ -201,7 +203,6 @@ definirSexo();
             chboxHombre.setSelected(true);
             chboxMujer.setSelected(false);
         }else {
-
             chboxHombre.setSelected(false);
             chboxMujer.setSelected(true);
         }

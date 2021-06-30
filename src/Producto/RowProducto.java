@@ -57,6 +57,9 @@ public class RowProducto implements Initializable {
     private final String estiloIgual="" +
             "-fx-background-color:#f8fd67;"
             ;
+    private final String estiloMayor="" +
+            "-fx-background-color:#ffffff;"
+            ;
 
     //estilo de los estados
     private final String estadoActivo="" +
@@ -149,6 +152,10 @@ public void setAncho(Double ancho){rootRow.setPrefWidth(ancho);}
             case "igual":
                 rootRow.setStyle(estiloIgual);
                 break;
+            case "mayor":
+                rootRow.setStyle(estiloMayor);
+                break;
+
         }
 
     }

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="1072.0" stylesheets="/Style/StyleForm.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cliente.FormCliente">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="39.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="477.0" minWidth="10.0" prefWidth="472.0" />
@@ -32,52 +31,32 @@
                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="155.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="159.0" minHeight="25.0" prefHeight="33.0" />
-                <RowConstraints maxHeight="158.0" minHeight="25.0" prefHeight="35.0" />
-                <RowConstraints maxHeight="139.0" minHeight="0.0" prefHeight="32.0" />
-                <RowConstraints maxHeight="136.0" minHeight="10.0" prefHeight="38.0" />
-                <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="34.0" />
                 <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="32.0" />
                 <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="16.0" />
             </rowConstraints>
             <children>
-                <Label text="Codigo" GridPane.valignment="CENTER" />
-                <TextField GridPane.columnIndex="1" />
-                <Label text="Nombre" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Label text="Apellido" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Label text="Telefono Uno" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <Label text="Telefono Dos" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <Label text="Compañia" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                <Label text="Direccion" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                <Label prefHeight="18.0" prefWidth="56.0" text="Codigo:" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtCodigo" GridPane.columnIndex="1" />
+                <Label prefHeight="18.0" prefWidth="60.0" text="Nombre:" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label prefHeight="18.0" prefWidth="61.0" text="Apellido:" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtApellido" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label prefHeight="18.0" prefWidth="90.0" text="Telefono Uno:" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtTelefonouno" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label prefHeight="18.0" prefWidth="100.0" text="Telefono Dos:" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtTelefonodos" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Label text="Nit:" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                <TextField fx:id="txtNit" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 <Label text="Sexo" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
-
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                <Label text="Colocación" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
-                <Label text="Proveedor" GridPane.rowIndex="12" GridPane.valignment="CENTER" />
-                <Label text="Estado" GridPane.rowIndex="13" GridPane.valignment="CENTER" />
-                <ComboBox prefHeight="25.0" prefWidth="374.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                <ComboBox prefHeight="25.0" prefWidth="376.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="11" />
-                <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="12" />
-                <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER">
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                     <children>
-                        <CheckBox mnemonicParsing="false" text="Activo" />
-                        <CheckBox mnemonicParsing="false" text="No Activo" />
+                        <CheckBox fx:id="chboxHombre" mnemonicParsing="false" onAction="#SeleccionarHombre" text="Hombre" />
+                        <CheckBox fx:id="chboxMujer" mnemonicParsing="false" onAction="#SeleccionarMujer" text="Mujer" />
                     </children>
-                    <padding>
-                        <Insets top="10.0" />
-                    </padding>
                 </HBox>
             </children>
         </GridPane>
-        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="291.0" text="Ingresar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-        <Label text="Ingreso de un nuevo cliente" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+        <Button id="btnPrimario" fx:id="btnIngresarCliente" mnemonicParsing="false" onAction="#RegistrarCliente" prefHeight="30.0" prefWidth="291.0" text="Ingresar Cliente" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+        <Label fx:id="labelTitulo" text="Ingreso de un nuevo cliente" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
     </children>
 </GridPane>

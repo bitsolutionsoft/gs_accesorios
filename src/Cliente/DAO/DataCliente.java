@@ -66,8 +66,8 @@ public class DataCliente {
             callableStatement.setInt(4,cliente.telefonoUno);
             callableStatement.setInt(5,cliente.telefonoDos);
             callableStatement.setString(6,cliente.nit);
-            callableStatement.setString(6,cliente.sexo);
-            callableStatement.setString(7,accion);
+            callableStatement.setString(7,cliente.sexo);
+            callableStatement.setString(8,accion);
 
             callableStatement.execute();
             System.out.println("Registrado con exito");

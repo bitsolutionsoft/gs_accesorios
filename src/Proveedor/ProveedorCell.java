@@ -56,43 +56,43 @@ public class ProveedorCell extends ListCell<Proveedor> {
             @Override
             public void handle(ActionEvent actionEvent) {
 
-                    Proveedor proveedor = new Proveedor();
-                    for (int i = 0; i < getListView().getItems().size(); i++) {
-                        if (Integer.parseInt(rowProveedor.codigo.getText()) == getListView().getItems().get(i).getIdProveedor()) {
-                            proveedor.setIdProveedor(getListView().getItems().get(i).getIdProveedor());
-                            proveedor.setNombre(getListView().getItems().get(i).getNombre());
-                            proveedor.setApellido(getListView().getItems().get(i).getApellido());
-                            proveedor.setTelefonoUno(getListView().getItems().get(i).getTelefonoUno());
-                            proveedor.setTelefonoDos(getListView().getItems().get(i).getTelefonoDos());
-                            proveedor.setCompania(getListView().getItems().get(i).getCompania());
-                            proveedor.setDireccion(getListView().getItems().get(i).getDireccion());
-                            proveedor.setSexo(getListView().getItems().get(i).getSexo());
-                            proveedor.setEstado(getListView().getItems().get(i).getEstado());
+                Proveedor proveedor = new Proveedor();
+                for (int i = 0; i < getListView().getItems().size(); i++) {
+                    if (Integer.parseInt(rowProveedor.codigo.getText()) == getListView().getItems().get(i).getIdProveedor()) {
+                        proveedor.setIdProveedor(getListView().getItems().get(i).getIdProveedor());
+                        proveedor.setNombre(getListView().getItems().get(i).getNombre());
+                        proveedor.setApellido(getListView().getItems().get(i).getApellido());
+                        proveedor.setTelefonoUno(getListView().getItems().get(i).getTelefonoUno());
+                        proveedor.setTelefonoDos(getListView().getItems().get(i).getTelefonoDos());
+                        proveedor.setCompania(getListView().getItems().get(i).getCompania());
+                        proveedor.setDireccion(getListView().getItems().get(i).getDireccion());
+                        proveedor.setSexo(getListView().getItems().get(i).getSexo());
+                        proveedor.setEstado(getListView().getItems().get(i).getEstado());
 
-
-                        }
-                    }
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Proveedor/FormProveedor.fxml"));
-                        Parent parent = loader.load();
-                        Stage stage = new Stage();
-                        stage.setTitle("Modificar producto");
-                        stage.getIcons().add(new Image("/img/icon.png"));
-                        stage.setScene(new Scene(parent));
-                        FormProveedor formProveedor = loader.<FormProveedor>getController();
-                        formProveedor.pasarRegistro(proveedor);
-                        stage.show();
-                        stage.setOnHiding((event -> {
-                            ProveedorController proveedorController = new ProveedorController();
-                            proveedorController.initLista(getListView());
-                            getListView().refresh();
-                        }));
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
 
                     }
                 }
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Proveedor/FormProveedor.fxml"));
+                    Parent parent = loader.load();
+                    Stage stage = new Stage();
+                    stage.setTitle("Modificar producto");
+                    stage.getIcons().add(new Image("/img/icon.png"));
+                    stage.setScene(new Scene(parent));
+                    FormProveedor formProveedor = loader.<FormProveedor>getController();
+                    formProveedor.pasarRegistro(proveedor);
+                    stage.show();
+                    stage.setOnHiding((event -> {
+                        ProveedorController proveedorController = new ProveedorController();
+                        proveedorController.initLista(getListView());
+                        getListView().refresh();
+                    }));
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+
+                }
+            }
 
         });
         //final del evento modificar

@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -31,8 +32,8 @@ public class ClienteController implements Initializable {
     String hcambio="";
     RowCliente rowCliente=new RowCliente();
 
- static    ObservableList<Cliente> clientes ;
- static    FilteredList<Cliente> clientedata;
+    static    ObservableList<Cliente> clientes ;
+    static    FilteredList<Cliente> clientedata;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -102,7 +103,12 @@ public class ClienteController implements Initializable {
             Stage stage=new Stage();
             stage.setScene(new Scene(parent));
             stage.show();
-
+            stage.getIcons().add(new Image("/img/icon.png"));
+            stage.setOnHiding((event ->{
+                initLista(listCliente);
+                llenarListaCliente();
+                listCliente.refresh();
+            }));
 
         }catch (IOException e){
             e.printStackTrace();

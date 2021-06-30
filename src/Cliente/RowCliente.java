@@ -21,12 +21,13 @@ import java.util.ResourceBundle;
 
 public class RowCliente implements Initializable {
 
+
     public Label codigo;
     public Label nombre;
-    public Label tipocliente;
     public Label sexo;
     public Label telefonouno;
     public Label telefonodos;
+    public Label nit;
 
 
 
@@ -76,6 +77,8 @@ public class RowCliente implements Initializable {
     public void setNombre(String texto) {
         nombre.setText(texto);
     }
+    public void setNit(String texto){nit.setText(texto);}
+
 
 
 

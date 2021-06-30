@@ -6,21 +6,23 @@
 
 <HBox id="rowListView" fx:id="rootRow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="956.0" stylesheets="/Style/StyleModulo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cliente.RowCliente">
     <children>
-        <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+        <VBox prefHeight="124.0" prefWidth="100.0" spacing="5.0">
             <children>
                 <Label id="subtituloItem" text="Codigo" />
                 <Label id="descripcionItem" fx:id="codigo" text="Label" />
                 <Label id="subtituloItem" text="Sexo" />
-                <Label fx:id="sexo" text="Label" />
+                <Label id="descripcionItem" fx:id="sexo" text="Label" />
             </children>
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
         </VBox>
-        <VBox prefHeight="88.0" prefWidth="345.0">
+        <VBox prefHeight="24.0" prefWidth="344.0">
             <children>
-                <Label id="tituloItem" text="Nombre" />
-                <Label id="descripcionItem" fx:id="nombre" text="Label" />
+                <Label id="tituloItem" prefHeight="7.0" prefWidth="44.0" text="Nombre" />
+                <Label id="descripcionItem" fx:id="nombre" prefHeight="18.0" prefWidth="338.0" text="Label" />
+                <Label id="subtituloItem" prefHeight="18.0" prefWidth="71.0" text="Nit" />
+                <Label id="descripcionItem" fx:id="nit" prefHeight="18.0" prefWidth="337.0" text="Label" />
             </children></VBox>
         <VBox prefHeight="110.0" prefWidth="209.0">
             <children>
@@ -55,10 +57,14 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label id="descripcionItem" fx:id="tipocliente" prefHeight="18.0" prefWidth="87.0" text="Label" GridPane.rowIndex="1" />
-                        <Label id="subtituloItem" text="Tipo de" />
+                        <Label id="descripcionItem" fx:id="Direccion" prefHeight="18.0" prefWidth="87.0" GridPane.rowIndex="2" />
+                        <Label id="subtituloItem" prefHeight="18.0" prefWidth="121.0" text="Direccion" />
+                        <Label id="descripcionItem" fx:id="direccion" prefHeight="18.0" prefWidth="188.0" text="Label" GridPane.rowIndex="1" />
+                        <Label id="subtituloItem" text="Estado" GridPane.rowIndex="2" />
+                        <Label id="descripcionItem" fx:id="estado" text="Label" GridPane.rowIndex="3" />
                     </children>
                 </GridPane>
             </children></VBox>

@@ -61,12 +61,12 @@
                         <Insets top="10.0" />
                     </padding>
                 </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
-               <children>
-                  <CheckBox fx:id="chboxHombre" mnemonicParsing="false" onAction="#SeleccionarHombre" text="Hombre" />
-                  <CheckBox fx:id="chboxMujer" mnemonicParsing="false" onAction="#SeleccionarMujer" text="Mujer" />
-               </children>
-            </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                    <children>
+                        <CheckBox fx:id="chboxHombre" mnemonicParsing="false" onAction="#SeleccionarHombre" text="Hombre" />
+                        <CheckBox fx:id="chboxMujer" mnemonicParsing="false" onAction="#SeleccionarMujer" text="Mujer" />
+                    </children>
+                </HBox>
             </children>
         </GridPane>
         <Button id="btnPrimario" fx:id="btnIngresarProveedor" mnemonicParsing="false" onAction="#RegistrarProveedor" prefHeight="30.0" prefWidth="291.0" text="Ingresar Cliente" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
