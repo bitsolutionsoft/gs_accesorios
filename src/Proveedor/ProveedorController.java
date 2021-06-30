@@ -1,7 +1,5 @@
 package Proveedor;
 
-import Cliente.DAO.Cliente;
-import Cliente.DAO.DataCliente;
 import Proveedor.DAO.DataProveedor;
 import Proveedor.DAO.Proveedor;
 import javafx.collections.FXCollections;

@@ -1,11 +1,6 @@
 package Proveedor;
 
 import ClassAux.AlertDialog;
-import ClassAux.Util;
-import Cliente.DAO.Cliente;
-import Cliente.DAO.DataCliente;
-import Cliente.RowCliente;
-import Producto.DAO.Producto;
 import Proveedor.DAO.DataProveedor;
 import Proveedor.DAO.Proveedor;
 import javafx.event.ActionEvent;

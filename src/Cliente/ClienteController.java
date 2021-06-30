@@ -1,11 +1,10 @@
 package Cliente;
 
+
 import Cliente.DAO.Cliente;
 import Cliente.DAO.DataCliente;
 
-import Producto.DAO.Producto;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -49,7 +48,7 @@ public class ClienteController implements Initializable {
     public void initLista(ListView<Cliente> listView){
         DataCliente datos=new DataCliente();
         clientes = FXCollections.observableArrayList(datos.viewCliente("viewall"));
-        clientedata=new FilteredList<Cliente>(clientes,s->true);
+        clientedata=new FilteredList<Cliente>(clientes, s->true);
         listView.setItems(clientedata);
         //para llenar las filas personalizadas
 

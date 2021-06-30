@@ -51,7 +51,7 @@ public class DataColocacion {
             Conexion conexion =new Conexion();
 
             conexion.Conexion();
-            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_colocacion(?, ?, ?, ?);}");
+            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_colocacion(?, ?, ?, ?)}");
             callableStatement.setInt(1,colocacion.getIdColocacion());
             callableStatement.setString(2,colocacion.getNombre());
             callableStatement.setString(3,colocacion.getEstado());

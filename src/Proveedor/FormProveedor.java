@@ -2,13 +2,6 @@ package Proveedor;
 
 import ClassAux.Formato;
 import ClassAux.Util;
-import Cliente.DAO.Cliente;
-import Cliente.DAO.DataCliente;
-import Colocacion.DAO.Colocacion;
-import Producto.DAO.DataLote;
-import Producto.DAO.DataProducto;
-import Producto.DAO.Lote;
-import Producto.DAO.Producto;
 import Proveedor.DAO.DataProveedor;
 import Proveedor.DAO.Proveedor;
 import javafx.event.ActionEvent;

@@ -1,18 +1,14 @@
 package Menu;
 
-import Conexion.Conexion;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -125,7 +121,7 @@ public static ImageView icono(String url){
 
 
     public void AbrirColocacion(ActionEvent actionEvent) {
-        VBox panelCenter=(VBox) vista("/Colocacion/Colocacion.fxml");
+        VBox panelCenter=(VBox) vista("/Colocacion/ColocacionController.fxml");
         panelCenter.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         panelCenter.setPadding(new Insets(10));
         Menu.setCenter(panelCenter);

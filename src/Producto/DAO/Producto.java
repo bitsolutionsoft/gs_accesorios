@@ -177,4 +177,12 @@ public class Producto {
     public void setColocacion(String colocacion) {
         this.colocacion = colocacion;
     }
+
+    @Override
+    public String toString() {
+        return
+                "nombre: " + nombre+";\t"  +
+                " modelo: " + modelo + ";\t" +
+                "especificacion: " + especificacion + ";\t";
+    }
 }

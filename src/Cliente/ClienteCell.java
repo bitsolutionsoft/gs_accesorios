@@ -4,7 +4,6 @@ import ClassAux.AlertDialog;
 import Cliente.DAO.Cliente;
 import Cliente.DAO.DataCliente;
 
-import Proveedor.DAO.Proveedor;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;

@@ -101,4 +101,48 @@ public class DataProducto {
 
 
     }
+
+    public ArrayList<Producto> viewProductoXCol(Producto pr,String accion){
+
+
+        ArrayList<Producto> lista=new ArrayList<>();
+        try {
+            Conexion conexion =new Conexion();
+
+            conexion.Conexion();
+            CallableStatement callableStatement=conexion.con.prepareCall("{call ingreso_producto(?, ?, ?, ?,  ?, ?, ?, ?, ?, ?)}");
+            callableStatement.setInt(1,0);
+            callableStatement.setString(2,"");
+            callableStatement.setString(3,"");
+            callableStatement.setString(4,"");
+            callableStatement.setInt(5,0);
+            callableStatement.setInt(6,0);
+            callableStatement.setInt(7,pr.getIdcolocacion());
+            callableStatement.setInt(8,0);
+
+            callableStatement.setString(9,"");
+            callableStatement.setString(10,accion);
+
+
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()){
+                Producto producto=new Producto();
+                producto.setNombre(resultSet.getString("nombre"));
+                producto.setModelo(resultSet.getString("modelo"));
+                producto.setEspecificacion(resultSet.getString("especificacion"));
+                lista.add(producto);
+            }
+
+            callableStatement.close();
+            conexion.con.close();
+            resultSet.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            Util.Error("Producto","Algo salio mal revise:"+ throwables);
+
+        }
+
+        return lista;
+    }
 }

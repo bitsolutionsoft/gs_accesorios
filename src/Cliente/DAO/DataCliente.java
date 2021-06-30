@@ -2,7 +2,6 @@ package Cliente.DAO;
 
 import ClassAux.Util;
 import Conexion.Conexion;
-import Producto.DAO.Producto;
 
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
@@ -15,7 +14,7 @@ public class DataCliente {
     public ArrayList<Cliente> viewCliente(String accion){
 
 
-        ArrayList<Cliente> lista=new ArrayList<>();
+        ArrayList<Cliente> lista=new ArrayList<Cliente>();
         try {
             Conexion conexion =new Conexion();
 

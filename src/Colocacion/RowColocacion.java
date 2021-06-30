@@ -1,7 +1,6 @@
-package Proveedor;
+package Colocacion;
 
-import Proveedor.DAO.Proveedor;
-import javafx.geometry.Insets;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -10,16 +9,13 @@ import javafx.scene.layout.HBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RowProveedor {
+public class RowColocacion implements Initializable {
+
+
 
     public Label codigo;
     public Label nombre;
-    public Label sexo;
-    public Label telefonouno;
-    public Label telefonodos;
-    public Label direccion;
-    public Label compania;
-
+    public Label estado;
 
 
 
@@ -28,8 +24,7 @@ public class RowProveedor {
     public Button btnEditar;
     public HBox rootRow;
 
-    public Label estado;
-    private Proveedor proveedor;
+
     //El estilo de cada boton
     private final String estiloBoton="" +
             "-fx-background-color:#edebe9;" +
@@ -58,36 +53,14 @@ public class RowProveedor {
         codigo.setText(String.valueOf(texto));
     }
 
-    public void setTelefonouno(int texto) {telefonouno.setText(String.valueOf(texto));
-    }
-
-    public void setTelefonodos(int texto) {
-        telefonodos.setText(String.valueOf(texto));
-    }
-    public void setSexo(String texto) {
-        sexo.setText(texto);
-    }
-
     public void setNombre(String texto) {
         nombre.setText(texto);
     }
-    public void setDireccion(String texto) {direccion.setText(texto); }
-    public void setCompania(String texto) {
-        compania.setText(texto);
-    }
-    public void setEstado(String texto) {
-        estado.setText(texto);
-        estado.setPadding(new Insets(5));
-        if (texto.equals("Activo")){
-            estado.setStyle(estadoActivo);
-            initButton();
+    public void setEstado(String texto){estado.setText(texto);}
 
-        }else{
-            estado.setStyle(estadoNoActivo);
-            initButton();
-        }
 
-    }
+
+
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -122,4 +95,6 @@ public class RowProveedor {
         imageView.setFitWidth(20);
         return imageView;
     }
+
+
 }
