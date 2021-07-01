@@ -55,13 +55,13 @@
                 <TextField fx:id="txtMaxima" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                 <Label text="Cantidada minima" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
                 <TextField fx:id="txtMinima" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                <Label text="Precio de Compra" GridPane.columnIndex="4" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                <Label prefHeight="18.0" prefWidth="146.0" text="Precio de Compra         Q" GridPane.columnIndex="4" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                 <TextField fx:id="txtPrecioCompra" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-                <Label text="Mayorista" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                <Label prefHeight="18.0" prefWidth="144.0" text="Mayorista                       Q" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                 <TextField fx:id="txtPrecioMayorista" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-                <Label text="Mayor" GridPane.columnIndex="4" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                <Label prefHeight="18.0" prefWidth="143.0" text="Mayor                             Q" GridPane.columnIndex="4" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
                 <TextField fx:id="txtPrecioMayor" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-                <Label text="Unidad" GridPane.columnIndex="4" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                <Label prefHeight="18.0" prefWidth="141.0" text="Unidad                            Q" GridPane.columnIndex="4" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
                 <TextField fx:id="txtPrecioUnidad" GridPane.columnIndex="5" GridPane.rowIndex="7" />
                 <Label text="Colocación" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
                 <Label text="Proveedor" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
@@ -79,7 +79,7 @@
                         <Insets top="10.0" />
                     </padding>
                 </HBox>
-            <Label id="tituloForm" text="Precios de Venta" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Label id="tituloForm" prefHeight="18.0" prefWidth="141.0" text="Precios de Venta            Q" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             <Label text="Codigo lote" GridPane.columnIndex="4" GridPane.rowIndex="2" />
             <TextField fx:id="txtIdlote" GridPane.columnIndex="5" GridPane.rowIndex="2" />
             <Label id="tituloForm" text="Datos del Lote" GridPane.columnIndex="4" GridPane.rowIndex="1" />

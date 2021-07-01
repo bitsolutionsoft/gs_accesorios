@@ -1,5 +1,6 @@
 package Proveedor.DAO;
 
+import ClassAux.Util;
 import Conexion.Conexion;
 
 
@@ -74,7 +75,7 @@ public class DataProveedor {
             callableStatement.setString(10,accion);
 
             callableStatement.execute();
-            System.out.println("Registrado con exito");
+            Util.Exito("Operacion","Realizado con exito:");
 
             callableStatement.close();
             conexion.con.close();

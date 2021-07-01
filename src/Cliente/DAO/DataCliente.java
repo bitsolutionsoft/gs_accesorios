@@ -69,7 +69,7 @@ public class DataCliente {
             callableStatement.setString(8,accion);
 
             callableStatement.execute();
-            System.out.println("Registrado con exito");
+            Util.Exito("Operacion","Realizado con exito:");
 
             callableStatement.close();
             conexion.con.close();

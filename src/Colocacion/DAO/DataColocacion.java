@@ -1,5 +1,6 @@
 package Colocacion.DAO;
 
+import ClassAux.Util;
 import Conexion.Conexion;
 import Proveedor.DAO.Proveedor;
 
@@ -60,7 +61,7 @@ public class DataColocacion {
             callableStatement.setString(4,accion);
 
             callableStatement.execute();
-            System.out.println("Registrado con exito");
+            Util.Exito("Operacion","Realizado con exito:");
 
             callableStatement.close();
             conexion.con.close();

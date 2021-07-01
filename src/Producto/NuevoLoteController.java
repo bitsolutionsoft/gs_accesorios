@@ -1,5 +1,6 @@
 package Producto;
 
+import ClassAux.Formato;
 import ClassAux.Util;
 import Producto.DAO.DataLote;
 import Producto.DAO.Lote;
@@ -34,7 +35,16 @@ public class NuevoLoteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Estado(estado);
+        validarFormato();
 
+    }
+    public  void validarFormato(){
+        Formato formato=new Formato();
+
+        formato.decimal(txtpreciocompra);
+        formato.decimal(txtpreciomayorista);
+        formato.decimal(txtpreciomayor);
+        formato.decimal(txtpreciounidad);
     }
     public void AgragarLote(ActionEvent actionEvent) {
 

@@ -6,7 +6,7 @@
 
 <HBox id="rowListView" fx:id="rootRow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="956.0" stylesheets="/Style/StyleModulo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cliente.RowCliente">
     <children>
-        <VBox prefHeight="110.0" prefWidth="144.0" spacing="5.0">
+        <VBox prefHeight="110.0" prefWidth="164.0" spacing="5.0">
             <children>
                 <Label id="subtituloItem" text="Codigo" />
                 <Label id="descripcionItem" fx:id="codigo" text="Label" />
