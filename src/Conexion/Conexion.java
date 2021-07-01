@@ -1,4 +1,5 @@
 package Conexion;
+import ClassAux.AlertDialog;
 import ClassAux.Util;
 
 import  java.sql.*;
@@ -19,6 +20,7 @@ public class Conexion {
 
         }catch (SQLException e){
             Util.Error("conexion a la base de datos","Algo salio mal revise: "+ e);
+
             e.printStackTrace();
         }
         return con;
