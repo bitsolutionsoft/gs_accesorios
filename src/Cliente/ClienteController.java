@@ -98,21 +98,22 @@ public class ClienteController implements Initializable {
     public void nuevoCliente(ActionEvent actionEvent) {
 
         try {
-            Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("Cliente/FormCLiente.fxml"));
-            Stage stage=new Stage();
-            stage.setScene(new Scene(parent));
-            stage.show();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Cliente/FormCliente.fxml"));
+            Parent root1 = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
             stage.getIcons().add(new Image("/img/icon.png"));
-            stage.setOnHiding((event ->{
+            stage.show();
+            stage.setOnHiding((event -> {
                 initLista(listCliente);
                 llenarListaCliente();
                 listCliente.refresh();
             }));
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-
         }
+
     }
 
 }

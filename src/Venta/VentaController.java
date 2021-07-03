@@ -498,16 +498,23 @@ lblNoOrden.setText(String.valueOf(dataProDisponible.orden()));
     public void RealizarVenta(ActionEvent actionEvent) {
         DataFactura factura=new DataFactura();
         DataDetalleFactura detalleFactura=new DataDetalleFactura();
+        int orden=0;
+        if(Integer.parseInt(lblNoOrden.getText()) > 0){
+            orden=Integer.parseInt(lblNoOrden.getText());
+        }else{
+            orden=1;
+        }
         if (!cbxCliente.getSelectionModel().isEmpty()) {
             Factura datosFactura=new Factura(0, cbxCliente.getSelectionModel().getSelectedItem().getCodigo(),"","","",0);
             factura.crudFactura(datosFactura,"new");
             for (int i=0;i<proSelecionado.size();i++){
-                DetalleFactura datosDetalle=new DetalleFactura(0,Integer.parseInt(lblNoOrden.getText()),proSelecionado.get(i).getIdproducto(),proSelecionado.get(i).getDescripcion(),proSelecionado.get(i).getCantidad(),proSelecionado.get(i).getIdlote(),proSelecionado.get(i).getPrecio(),proSelecionado.get(i).getSubtotal());
+                DetalleFactura datosDetalle=new DetalleFactura(0,orden,proSelecionado.get(i).getIdproducto(),proSelecionado.get(i).getDescripcion(),proSelecionado.get(i).getCantidad(),proSelecionado.get(i).getIdlote(),proSelecionado.get(i).getPrecio(),proSelecionado.get(i).getSubtotal());
                 detalleFactura.crudDetalleFactura(datosDetalle, "new");
             }
             ImprimirVale imprimir=new ImprimirVale();
             Modelo_factura modelo=new Modelo_factura();
-            imprimir.LlenarFactura(modelo.datosFactura(proSeleccionados),lblNoOrden.getText(),guardarFact,imprimirFact,txtFecha.getText(),cbxCliente.getSelectionModel().getSelectedItem().getNombre()+" "+cbxCliente.getSelectionModel().getSelectedItem().getApellido(),"Ciudad",Float.parseFloat(lblTotal.getText()),cbxCliente.getSelectionModel().getSelectedItem().getNit());
+
+            imprimir.LlenarFactura(modelo.datosFactura(proSeleccionados),String.valueOf(orden),guardarFact,imprimirFact,txtFecha.getText(),cbxCliente.getSelectionModel().getSelectedItem().getNombre()+" "+cbxCliente.getSelectionModel().getSelectedItem().getApellido(),"Ciudad",Float.parseFloat(lblTotal.getText()),cbxCliente.getSelectionModel().getSelectedItem().getNit());
         }
         btnLimpiar.setVisible(true);
     }
