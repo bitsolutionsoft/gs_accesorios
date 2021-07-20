@@ -2,10 +2,9 @@ package Informe;
 
 import ClassAux.SizeColumnTable;
 import ClassAux.Util;
-import Informe.DAO.Cuenta;
-import Informe.DAO.DataVentas;
-import Informe.DAO.ResumenVenta;
-import Informe.DAO.Ventas;
+import Informe.DAO.*;
+import Producto.FormProducto;
+import Producto.ProductoController;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,11 +12,16 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -51,6 +55,8 @@ public class InformeController implements Initializable {
     FilteredList<ResumenVenta> filteredListVenta=null;
     ObservableList<Cuenta> listCuenta= null;
     SizeColumnTable size_tabla=new SizeColumnTable();
+    ObservableList<Producto_Vendido> listVendido=null;
+    DataProductoVendido vendido=new DataProductoVendido();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -65,6 +71,7 @@ public class InformeController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 VerCierreVenta(new Ventas(0,obtnerfechaHoy(),obtnerfechaHoy()),"dia","gdia");
+                listVendido=FXCollections.observableArrayList(vendido.viewProductoVendido(new Ventas(0,obtnerfechaHoy(),obtnerfechaHoy()),"hoy"));
                 rSemana.setSelected(false);
                 rMes.setSelected(false);
             }
@@ -73,6 +80,7 @@ public class InformeController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 VerCierreVenta(new Ventas(0,obtnerfechaHoy(),obtnerfechaHoy()),"semana","gsemana");
+                listVendido=FXCollections.observableArrayList(vendido.viewProductoVendido(new Ventas(0,obtnerfechaHoy(),obtnerfechaHoy()),"semana"));
                 rDia.setSelected(false);
                 rMes.setSelected(false);
             }
@@ -81,6 +89,7 @@ public class InformeController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 VerCierreVenta(new Ventas(0,obtnerfechaHoy(),obtnerfechaHoy()),"mes","gmes");
+                listVendido=FXCollections.observableArrayList(vendido.viewProductoVendido(new Ventas(0,obtnerfechaHoy(),obtnerfechaHoy()),"mes"));
                 rSemana.setSelected(false);
                 rDia.setSelected(false);
             }
@@ -95,6 +104,7 @@ public class InformeController implements Initializable {
                 String fe_final=returnFechaSelect(fFinal,"Fecha Final");
                 System.out.println(fe_inicial);
                VerCierreVenta  (new Ventas(0,fe_inicial,fe_final),"rango","grango");
+                listVendido=FXCollections.observableArrayList(vendido.viewProductoVendido(new Ventas(0,fe_inicial,fe_final),"rango"));
 
             }
 
@@ -186,5 +196,23 @@ public class InformeController implements Initializable {
     }
     public String obtnerfechaHoy(){
       return String.valueOf(LocalDate.now());
+    }
+
+    public void producto_mas_vendido(ActionEvent actionEvent) {
+        try{
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Producto_mas_vendido.fxml"));
+            Parent parent = loader.load();
+            Stage stage=new Stage();
+            stage.setScene(new Scene(parent));
+            stage.getIcons().add(new Image("/img/icon.png"));
+            Producto_mas_vendido producto_mas_vendido = loader.<Producto_mas_vendido>getController();
+            producto_mas_vendido.llenarTabla(listVendido);
+            stage.show();
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

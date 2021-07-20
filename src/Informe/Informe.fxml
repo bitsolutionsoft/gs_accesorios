@@ -102,9 +102,9 @@
                 </GridPane>
                 <GridPane vgap="5.0" GridPane.rowIndex="2">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="4.0" prefWidth="227.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="700.0" minWidth="10.0" prefWidth="700.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0" prefWidth="143.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="4.0" prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="887.0" minWidth="10.0" prefWidth="750.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="290.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -159,6 +159,7 @@
                                 </Label>
                             </children>
                         </HBox>
+                  <Button id="btnSecundario" mnemonicParsing="false" onAction="#producto_mas_vendido" text="Productos mas vendido" GridPane.columnIndex="2" />
                     </children>
                 </GridPane>
                 <TextField fx:id="txtBuscar" promptText="Buscar..." GridPane.rowIndex="3">
